@@ -77,8 +77,8 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "spine: one output row per road segment (50,027 of 64,392 features; trails, rivers, railways and walkways excluded)",
-   "notes": "Carries the street name, road class, one-way flag and address ranges for both sides of every segment. It does not carry the street's parking itself: no lane counts, no parking side, no stall positions.",
+   "join_role": "the base map: one row for each street section (50,027 of 64,392 street pieces; trails, rivers, railways and walkways taken out)",
+   "notes": "Carries the street name, the kind of road, the one-way flag and the address ranges for both sides of every section. It does not carry the street's parking itself: no lane counts, no parking side, no space positions.",
    "catalogue_url": "https://open.toronto.ca/dataset/toronto-centreline-tcl/"
   },
   {
@@ -100,8 +100,8 @@
     "when"
    ],
    "joined": "joined",
-   "join_role": "rules layer: 27,768 current street parking rules flattened to CSV and counted per street name",
-   "notes": "Chapter 950 schedules. One JSON resource of 806.5 MB holds all 77,940 regulation records, current and repealed. Locations are legal text (street, side, between). Times are text ('Anytime', '7:00 a.m. to 9:00 a.m., Mon. to Fri.'). No segment geometry in any record.",
+   "join_role": "the parking rules: 27,768 current street parking rules, put in a spreadsheet and counted per street name",
+   "notes": "The schedules of the city's parking bylaw (Chapter 950). One data file of 806.5 MB holds all 77,940 rule records, current and repealed. Locations are legal text (street, side, between). Times are text ('Anytime', '7:00 a.m. to 9:00 a.m., Mon. to Fri.'). No record carries map coordinates for the stretch a rule covers.",
    "catalogue_url": "https://open.toronto.ca/dataset/traffic-and-parking-by-law-schedules/"
   },
   {
@@ -124,8 +124,8 @@
     "when"
    ],
    "joined": "joined",
-   "join_role": "observed enforcement: 6,454,695 tickets (2023-2025 reference slice) aggregated by street name and attached to every segment of the street",
-   "notes": "The enforcement record is fully open. Tickets locate to a street address; the reference project geocoded 86.9% of the slice to address points.",
+   "join_role": "the tickets as written: 6,454,695 tickets (2023-2025), added up by street name and attached to every section of the street",
+   "notes": "The ticket record is fully open. Tickets locate to a street address; the sister project put 86.9% of them on a map as address points.",
    "catalogue_url": "https://open.toronto.ca/dataset/parking-tickets/"
   },
   {
@@ -150,8 +150,8 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "permit layer: segment midpoint in polygon test against 97 permit-area polygons",
-   "notes": "Permit areas are polygons with area codes (e.g. 12B). The file names the areas; permit rules (hours, prices) are not in it.",
+   "join_role": "permit parking: a section is in a permit area when its midpoint falls inside one of the 97 permit-area shapes",
+   "notes": "Permit areas are shapes on a map with area codes (e.g. 12B). The file names the areas; permit rules (hours, prices) are not in it.",
    "catalogue_url": "https://open.toronto.ca/dataset/on-street-permit-parking-area-maps/"
   },
   {
@@ -176,8 +176,8 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "frozen duplicate of the cycling network: the record's refresh rate is 'Will not be Refreshed', and the file is not the same as Cycling Network (1,323 features vs 1,581, different segment IDs). The maintained Cycling Network file was joined instead",
-   "notes": "Kept in the inventory because a search for the bike network returns both records and nothing states which is canonical.",
+   "join_role": "an older copy of the bike lane file, no longer updated: the record's refresh rate is 'Will not be Refreshed', and the file is not the same as Cycling Network (1,323 features vs 1,581, different section IDs). The maintained Cycling Network file was used instead",
+   "notes": "Kept in the list because a search for the bike network returns both records and nothing states which one is official.",
    "catalogue_url": "https://open.toronto.ca/dataset/bikeways/"
   },
   {
@@ -201,8 +201,8 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "bike layer: on-road lines within 25 m of a segment with the same street name set the segment's bike_infra_type (923 on-road features of 1,581)",
-   "notes": "The maintained cycling network record (semi-annual refresh, modified 2026-09-14). Off-road multi-use trails were excluded from the join because they do not occupy a parking lane.",
+   "join_role": "bike lanes: on-road lines within 25 m of a street section with the same street name set the section's bike lane type (923 on-road features of 1,581)",
+   "notes": "The maintained bike network record (updated twice a year, modified 2026-09-14). Off-road trails were left out because they do not occupy a parking lane.",
    "catalogue_url": "https://open.toronto.ca/dataset/cycling-network/"
   },
   {
@@ -225,8 +225,8 @@
     "who"
    ],
    "joined": "joined",
-   "join_role": "facility layer: 252 car parks with address, capacity and rate text; segment rows count car parks within 250 m and distance to the nearest",
-   "notes": "CKAN refresh rate is 'Will not be Refreshed': the resource used is the 2019 snapshot. Rates are text strings (e.g. '$2.50 / Half Hour'), not numbers with units. Off-street only.",
+   "join_role": "car parks: 252 car parks with address, capacity and price text; each street section counts the car parks within 250 m and the distance to the nearest",
+   "notes": "The refresh rate on the city's open data site is 'Will not be Refreshed': the file used is the 2019 snapshot. Prices are text strings (e.g. '$2.50 / Half Hour'), not numbers with units. Off-street only.",
    "catalogue_url": "https://open.toronto.ca/dataset/green-p-parking/"
   },
   {
@@ -273,13 +273,13 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "1,070 stations from the GBFS station_information feed the dataset points to; segment rows count stations within 250 m",
-   "notes": "The CKAN entry is a pointer to the live GBFS feed, not a file. Station capacity is in the feed.",
+   "join_role": "1,070 stations from the live station feed the record points to; each street section counts the stations within 250 m",
+   "notes": "The entry on the city's open data site points to the live feed, not a file. Station capacity is in the feed.",
    "catalogue_url": "https://open.toronto.ca/dataset/bike-share-toronto/"
   },
   {
    "ckan_id": "cafeto-curb-lane-parklet-cafe-locations",
-   "title": "Caf\u00e9TO Locations",
+   "title": "CaféTO Locations",
    "publisher": "City of Toronto",
    "owner_division": "Transportation Services",
    "last_updated": "2026-09-29",
@@ -299,13 +299,13 @@
     "when"
    ],
    "joined": "joined",
-   "join_role": "287 of 1,636 locations are parking-lane caf\u00e9s or parklets; segment rows count them within 250 m",
-   "notes": "Caf\u00e9TO locations record the season's licensed parking-lane and sidewalk caf\u00e9s. CKAN excerpt calls them historical locations.",
+   "join_role": "287 of 1,636 locations are parking-lane cafés or parklets; each street section counts them within 250 m",
+   "notes": "CaféTO locations record the season's licensed parking-lane and sidewalk cafés. The excerpt on the city's open data site calls them historical locations.",
    "catalogue_url": "https://open.toronto.ca/dataset/cafeto-curb-lane-parklet-cafe-locations/"
   },
   {
    "ckan_id": "off-street-parking-surface-lots-accessible-stalls",
-   "title": "Off-Street Parking \u2013 Surface Lots \u2013 Accessible Stalls",
+   "title": "Off-Street Parking – Surface Lots – Accessible Stalls",
    "publisher": "City of Toronto",
    "owner_division": "Toronto Parking Authority",
    "last_updated": "2026-07-01",
@@ -324,8 +324,8 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "669 accessible stalls at TPA surface lots; segment rows count them within 250 m",
-   "notes": "Stall-level coordinates exist here, but only for accessible stalls in off-street surface lots. Source note says positions come from 2024 aerial photography.",
+   "join_role": "669 accessible spaces at TPA surface lots; each street section counts them within 250 m",
+   "notes": "Space-by-space coordinates exist here, but only for accessible spaces in off-street surface lots. Source note says positions come from 2024 aerial photography.",
    "catalogue_url": "https://open.toronto.ca/dataset/off-street-parking-surface-lots-accessible-stalls/"
   },
   {
@@ -348,8 +348,8 @@
     "when"
    ],
    "joined": "not joined",
-   "join_role": "February 2014 snapshot, no coordinates: street, side and a text location per stand. The current stands are in the by-law schedules (Schedule 05, 159 current rules), which were joined instead",
-   "notes": "112 stands listed. The dataset is 12 years stale relative to the by-law file.",
+   "join_role": "February 2014 snapshot, no coordinates: street, side and a text location per stand. The current stands are in the by-law schedules (Schedule 05, 159 current rules), which were used instead",
+   "notes": "112 stands listed. The file is 12 years out of date relative to the by-law file.",
    "catalogue_url": "https://open.toronto.ca/dataset/taxicab-stand-locations/"
   },
   {
@@ -373,7 +373,7 @@
     "where"
    ],
    "joined": "joined",
-   "join_role": "82 city EV charging locations; segment rows count them within 250 m",
+   "join_role": "82 city EV charging locations; each street section counts them within 250 m",
    "notes": "Most locations are in Green P facilities (off-street). The by-law schedules add 59 current EV-charging parking rules by street name.",
    "catalogue_url": "https://open.toronto.ca/dataset/city-operated-electric-vehicle-charging-station-map/"
   },
@@ -397,7 +397,7 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "licensed front-yard and boulevard parking pads are tabulated by address (about 0.8 MB CSV) with licensed space counts; no geometry is published, and pads sit off the roadway",
+   "join_role": "licensed front-yard and boulevard parking pads are listed by address (about 0.8 MB CSV) with licensed space counts; no map shapes are published, and pads sit off the roadway",
    "notes": "Included because it is a parking permission the city sells; it describes the boulevard, not the parking lane.",
    "catalogue_url": "https://open.toronto.ca/dataset/residential-front-yard-parking/"
   },
@@ -418,8 +418,8 @@
     "who"
    ],
    "joined": "not joined",
-   "join_role": "the dataset has a single WEB resource and no downloadable file, so there is nothing to join; designated car-share parking areas exist as 48 current by-law rules (Schedule 43) and were joined through the rules layer",
-   "notes": "A programme description page standing in for a dataset.",
+   "join_role": "the record has a single web resource and no downloadable file, so there is nothing to use; designated car-share parking areas exist as 48 current by-law rules (Schedule 43) and were included through the parking rules",
+   "notes": "A programme description page standing in for a data file.",
    "catalogue_url": "https://open.toronto.ca/dataset/free-floating-carshare-program/"
   },
   {
@@ -441,13 +441,13 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "shapefile-only resource (9.7 MB), inventoried for completeness; sidewalk presence borders the street parking but does not allocate it",
-   "notes": "Says sidewalks are keyed to the city centreline, so a join is possible in future work.",
+   "join_role": "shapefile-only resource (9.7 MB), listed for completeness; sidewalk presence borders the street parking but does not allocate it",
+   "notes": "Says sidewalks are keyed to the city's street map, so a match is possible in future work.",
    "catalogue_url": "https://open.toronto.ca/dataset/sidewalk-inventory/"
   },
   {
    "ckan_id": "topographic-mapping-edge-of-road",
-   "title": "Topographic Mapping \u2013 Edge of Road",
+   "title": "Topographic Mapping – Edge of Road",
    "publisher": "City of Toronto",
    "owner_division": "Information & Technology",
    "last_updated": "2026-02-20",
@@ -466,13 +466,13 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "the physical roadway extent as polygons (244 MB GeoJSON); inventoried, not downloaded, because it adds pavement extent only, no street parking allocation",
+   "join_role": "the physical roadway extent as map shapes (244 MB GeoJSON); listed, not downloaded, because it adds pavement extent only, no street parking allocation",
    "notes": "Collected from aerial photography. This is the closest public layer to the edge of the street, and it still contains no parking information.",
    "catalogue_url": "https://open.toronto.ca/dataset/topographic-mapping-edge-of-road/"
   },
   {
    "ckan_id": "topographic-mapping-physical-area-of-parking-lots",
-   "title": "Topographic Mapping \u2013 Physical area of parking lots",
+   "title": "Topographic Mapping – Physical area of parking lots",
    "publisher": "City of Toronto",
    "owner_division": "Information & Technology",
    "last_updated": "2026-02-20",
@@ -491,13 +491,13 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "polygons of parking lot areas (155 MB GeoJSON); lot outlines without stall lines, prices or operators",
-   "notes": "Shows that lot areas are mapped from the air while the stalls inside them are not published.",
+   "join_role": "map shapes of parking lot areas (155 MB GeoJSON); lot outlines without space lines, prices or operators",
+   "notes": "Shows that lot areas are mapped from the air while the spaces inside them are not published.",
    "catalogue_url": "https://open.toronto.ca/dataset/topographic-mapping-physical-area-of-parking-lots/"
   },
   {
    "ckan_id": "topographic-mapping-physical-area-of-sidewalks",
-   "title": "Topographic Mapping \u2013 Physical area of sidewalks",
+   "title": "Topographic Mapping – Physical area of sidewalks",
    "publisher": "City of Toronto",
    "owner_division": "Information & Technology",
    "last_updated": "2026-02-20",
@@ -516,7 +516,7 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "sidewalk area polygons; same reasoning as edge-of-road",
+   "join_role": "sidewalk area shapes; same reasoning as edge-of-road",
    "notes": "",
    "catalogue_url": "https://open.toronto.ca/dataset/topographic-mapping-physical-area-of-sidewalks/"
   },
@@ -537,7 +537,7 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "duplicates the one-way flag already on every centreline segment (ONEWAY_DIR_CODE_DESC), so it adds nothing to the join",
+   "join_role": "duplicates the one-way flag already on every street section in the city's street map (ONEWAY_DIR_CODE_DESC), so it adds nothing",
    "notes": "",
    "catalogue_url": "https://open.toronto.ca/dataset/one-way-streets/"
   },
@@ -561,7 +561,7 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "centreline intersection nodes; the by-law rules anchor to these IDs in 52.9% of kept rules, but the anchor is a point, not the rule's extent",
+   "join_role": "the city's intersection points; the by-law rules point to these IDs in 52.9% of kept rules, but the point is not the stretch the rule covers",
    "notes": "",
    "catalogue_url": "https://open.toronto.ca/dataset/intersection-file-city-of-toronto/"
   },
@@ -586,7 +586,7 @@
     "when"
    ],
    "joined": "not joined",
-   "join_role": "a live feed of current closures; it says what blocks a street today, but records are point-in-time and the feed is not archived as a dataset file",
+   "join_role": "a live feed of current closures; it says what blocks a street today, but records are point-in-time and the feed is not archived as a data file",
    "notes": "Useful for operations; not a stable join source.",
    "catalogue_url": "https://open.toronto.ca/dataset/road-restrictions/"
   },
@@ -612,8 +612,8 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "transit shelters stand on the sidewalk or boulevard beside the parking lane; inventoried as street furniture, not joined because shelters do not allocate the parking lane",
-   "notes": "Part of a street furniture family (benches, litter bins, poster structures) published as separate datasets.",
+   "join_role": "transit shelters stand on the sidewalk or boulevard beside the parking lane; listed as street furniture, not used because shelters do not allocate the parking lane",
+   "notes": "Part of a street furniture family (benches, litter bins, poster structures) published as separate data files.",
    "catalogue_url": "https://open.toronto.ca/dataset/street-furniture-transit-shelter/"
   },
   {
@@ -639,7 +639,7 @@
    ],
    "joined": "not joined",
    "join_role": "bicycle locking rings in the right-of-way; same reasoning as transit shelters",
-   "notes": "Replaced the retired bicycle post and ring dataset.",
+   "notes": "Replaced the retired bicycle post and ring file.",
    "catalogue_url": "https://open.toronto.ca/dataset/street-furniture-bicycle-parking/"
   },
   {
@@ -687,8 +687,8 @@
     "where"
    ],
    "joined": "not joined",
-   "join_role": "retired dataset (notes say so); replaced by street furniture bicycle parking",
-   "notes": "Kept in the inventory because a search for bicycle parking still returns it.",
+   "join_role": "retired file (notes say so); replaced by street furniture bicycle parking",
+   "notes": "Kept in the list because a search for bicycle parking still returns it.",
    "catalogue_url": "https://open.toronto.ca/dataset/bicycle-post-and-ring-locations/"
   },
   {
@@ -709,7 +709,7 @@
     "price"
    ],
    "joined": "not joined",
-   "join_role": "Parks, Forestry and Recreation parking lots; the resource is a Q3 2016 spreadsheet, nine-plus years stale",
+   "join_role": "Parks, Forestry and Recreation parking lots; the resource is a Q3 2016 spreadsheet, nine-plus years out of date",
    "notes": "",
    "catalogue_url": "https://open.toronto.ca/dataset/parking-lot-facilities/"
   },
@@ -759,7 +759,7 @@
    ],
    "joined": "not joined",
    "join_role": "devices are signals and related equipment, upcoming or recently activated only; it contains no parking signs",
-   "notes": "Read carefully: this is the dataset a searcher expects to hold the sign inventory. It does not.",
+   "notes": "Read carefully: this is the file a searcher expects to hold the sign list. It does not.",
    "catalogue_url": "https://open.toronto.ca/dataset/traffic-control-devices/"
   },
   {
@@ -811,7 +811,7 @@
   },
   {
    "ckan_id": "10-year-cycling-network-plan-on-street-2016",
-   "title": "10 Year Cycling Network Plan \u2013 On-Street (2016)",
+   "title": "10 Year Cycling Network Plan – On-Street (2016)",
    "publisher": "City of Toronto",
    "owner_division": "Transportation Services",
    "last_updated": "2025-03-21",
@@ -872,7 +872,7 @@
     "when"
    ],
    "joined": "not joined",
-   "join_role": "TTC stops are street space allocations for transit; the GTFS zip carries stop points and schedules. Inventoried; a stop-level join is future work",
+   "join_role": "TTC stops are street space allocations for transit; the GTFS zip carries stop points and schedules. Listed; matching at stop level is future work",
    "notes": "Bus loading zones also appear as 20 current by-law rules (Schedule 10) and 551 school bus loading rules (Schedule 37).",
    "catalogue_url": "https://open.toronto.ca/dataset/merged-gtfs-ttc-routes-and-schedules/"
   }

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLang } from "@/i18n";
+import StreetMap from "@/components/StreetMap";
 
 // Row of public/data/streets.json (built by scripts/build_segments.py):
 // [street, street_norm, segments, length_km, bike_share, permit_share,
@@ -99,6 +100,16 @@ export default function StreetData() {
       .slice(0, 8);
   }, [query, streets, selected]);
 
+  const streetsRef = useRef<Street[]>([]);
+  useEffect(() => {
+    streetsRef.current = streets;
+  }, [streets]);
+
+  function handleMapPick(norm: string) {
+    const s = streetsRef.current.find((x) => x.norm === norm);
+    if (s) selectStreet(s);
+  }
+
   function selectStreet(s: Street, scroll = true) {
     setSelected(s);
     setQuery(s.street);
@@ -161,6 +172,7 @@ export default function StreetData() {
   return (
     <section id="explorer" className="bg-paper-warm">
       <div className="mx-auto max-w-[1392px] px-6 py-20 md:py-28">
+        <StreetMap selectedNorm={selected?.norm ?? null} onPick={handleMapPick} />
         <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-canada">{t.search.kicker}</p>
         <h2 className="display mt-4 max-w-[820px] text-[40px] md:text-[52px]">{t.search.title}</h2>
         <p className="mt-5 max-w-[820px] text-[18px] leading-relaxed text-ink/70">{t.search.body}</p>
@@ -187,7 +199,7 @@ export default function StreetData() {
                   >
                     <span className="text-[16px] font-medium">{s.street}</span>
                     <span className="shrink-0 font-mono text-[13px] text-ink/60">
-                      {fmt(s.segments)} · {s.lengthKm.toFixed(1)} km · {fmt(s.tickets)}
+                      {s.lengthKm.toFixed(1)} km · {fmt(s.tickets)} {t.search.ticketsWord}
                     </span>
                   </button>
                 </li>
@@ -206,10 +218,16 @@ export default function StreetData() {
               <h3 className="display text-[32px] md:text-[40px]">{detail.street}</h3>
               <div className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-line bg-line md:grid-cols-3 xl:grid-cols-6">
                 {[
-                  { v: fmt(selected.segments), l: t.search.statSegments },
-                  { v: `${selected.lengthKm.toFixed(2)} km`, l: t.search.statLength },
-                  { v: fmt(selected.rules), l: t.search.statRules },
+                  { v: `${selected.lengthKm.toFixed(1)} km`, l: t.search.statLength },
                   { v: fmt(selected.tickets), l: t.search.statTickets },
+                  { v: fmt(selected.rules), l: t.search.statRules },
+                  {
+                    v: fmt(
+                      (detail.rule_categories.no_stopping ?? 0) +
+                        (detail.rule_categories.no_parking ?? 0)
+                    ),
+                    l: t.search.statNoStopPark,
+                  },
                   { v: `${Math.round(selected.bikeShare * 100)}%`, l: t.search.statBike },
                   { v: `${Math.round(selected.permitShare * 100)}%`, l: t.search.statPermit },
                 ].map((st) => (
@@ -219,17 +237,25 @@ export default function StreetData() {
                   </div>
                 ))}
               </div>
+              <p className="mt-4 text-[14.5px] text-ink/60">
+                {selected.segments === 1
+                  ? t.search.sectionsNoteOne
+                  : t.search.sectionsNote.replace("{n}", fmt(selected.segments))}
+              </p>
 
               {Object.keys(detail.rule_categories).length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {Object.entries(detail.rule_categories)
-                    .sort((a, b) => b[1] - a[1])
-                    .map(([k, v]) => (
-                      <span key={k} className="rounded-full border border-line px-3.5 py-1.5 text-[13.5px] text-ink/75">
-                        {t.search.ruleCats[k as keyof typeof t.search.ruleCats] ?? k} · {fmt(v)}
-                      </span>
-                    ))}
-                </div>
+                <>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {Object.entries(detail.rule_categories)
+                      .sort((a, b) => b[1] - a[1])
+                      .map(([k, v]) => (
+                        <span key={k} className="rounded-full border border-line px-3.5 py-1.5 text-[13.5px] text-ink/75">
+                          {t.search.ruleCats[k as keyof typeof t.search.ruleCats] ?? k} · {fmt(v)} {v === 1 ? t.search.rulesWordOne : t.search.rulesWord}
+                        </span>
+                      ))}
+                  </div>
+                  <p className="mt-3 text-[13.5px] text-ink/55">{t.search.rulesNote}</p>
+                </>
               )}
 
               <h4 className="mt-8 text-[15px] font-semibold uppercase tracking-[0.1em] text-ink/55">
@@ -252,7 +278,6 @@ export default function StreetData() {
                     <li key={g.segment_id} className="py-3">
                       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                         <p className="text-[15px] font-medium">
-                          <span className="font-mono text-[13px] text-ink/50">#{g.segment_id}</span>{" "}
                           {g.road_class} · {Math.round(g.length_m)} m · {g.oneway ? t.search.oneway : t.search.twoway}
                           {sides.length > 0 && (
                             <span className="text-ink/60"> · {t.search.addrRange} {sides.join(" / ")}</span>
@@ -309,7 +334,6 @@ export default function StreetData() {
               <thead>
                 <tr className="border-b border-line bg-paper text-[13px] uppercase tracking-wide text-ink/55">
                   {th(t.search.colStreet, "street", false)}
-                  {th(t.search.colSegments, "segments")}
                   {th(t.search.colLength, "lengthKm")}
                   {th(t.search.colBike, "bikeShare")}
                   {th(t.search.colPermit, "permitShare")}
@@ -327,7 +351,6 @@ export default function StreetData() {
                     }`}
                   >
                     <td className="px-5 py-2.5 font-medium">{s.street}</td>
-                    <td className="px-5 py-2.5 text-right font-mono">{fmt(s.segments)}</td>
                     <td className="px-5 py-2.5 text-right font-mono">{s.lengthKm.toFixed(1)} km</td>
                     <td className="px-5 py-2.5 text-right font-mono">{Math.round(s.bikeShare * 100)}%</td>
                     <td className="px-5 py-2.5 text-right font-mono">{Math.round(s.permitShare * 100)}%</td>
@@ -337,7 +360,7 @@ export default function StreetData() {
                 ))}
                 {pageRows.length === 0 && (
                   <tr>
-                    <td colSpan={7} className="px-5 py-6 text-ink/60">
+                    <td colSpan={6} className="px-5 py-6 text-ink/60">
                       {t.search.noMatch}
                     </td>
                   </tr>

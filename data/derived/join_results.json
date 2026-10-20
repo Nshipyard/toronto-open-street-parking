@@ -1,46 +1,46 @@
 {
  "join_log": [
   {
-   "join": "cycling network -> centreline segments",
-   "method": "spatial (line within 25 m) AND normalized street-name equality",
+   "join": "Bike lanes matched to street sections",
+   "method": "a bike lane line within 25 m of the section, with the same street name",
    "left_rows": 923,
    "right_rows": 50027,
    "matched_left_rows": 880,
    "matched_right_rows": 4933,
    "match_rate_left": 0.9534,
-   "notes": "Off-road cycling features (Multi-Use Trail*, Park Road) excluded before the join: they do not occupy a parking lane. A cycling line can match several segments. Source is the Cycling Network record (semi-annual refresh); the frozen Bikeways record carries an older, different feature set and was not used."
+   "notes": "Off-road cycling features (Multi-Use Trail*, Park Road) were excluded before matching: they do not occupy a parking lane. A cycling line can match several sections. Source is the Cycling Network record (updated twice a year); the frozen Bikeways record carries an older, different feature set and was not used."
   },
   {
-   "join": "permit parking areas -> centreline segments",
-   "method": "spatial: segment representative point within permit-area polygon",
+   "join": "Permit parking areas matched to street sections",
+   "method": "the section's midpoint falls inside a permit-area shape",
    "left_rows": 97,
    "right_rows": 50027,
    "matched_right_rows": 12164,
    "match_rate_right": 0.2431,
-   "notes": "97 permit-area polygons; a segment is in an area when its midpoint falls inside."
+   "notes": "97 permit-area shapes; a section is in an area when its midpoint falls inside."
   },
   {
-   "join": "by-law rules -> centreline segments",
-   "method": "normalized street-name equality (rules carry no segment geometry; 30.5k of 77,940 by-law records anchor to an intersection point at best)",
+   "join": "Parking rules matched to street sections",
+   "method": "street-name equality, with names tidied into one form (the rules carry no map coordinates for their stretch; 30.5k of 77,940 by-law records point to an intersection at best)",
    "left_rows": 27768,
    "distinct_left_streets": 6836,
    "matched_left_streets": 5921,
    "match_rate_left": 0.8661,
-   "notes": "Counts attach at street level: every segment of a street carries the street's rule counts. Rule extents (side, between) stay in bylaw_rules.csv."
+   "notes": "Counts attach at street level: every section of a street carries the street's rule counts. Rule extents (side, between) stay in bylaw_rules.csv."
   },
   {
-   "join": "parking tickets 2023-2025 -> centreline segments",
-   "method": "street name from ticket location2 (house number stripped, first street of intersections), normalized, equality with centreline street name",
+   "join": "Parking tickets 2023-2025 matched to street sections",
+   "method": "street name from the ticket's location (house number stripped, first street of intersections), tidied into one form, matched to the street map's street name",
    "left_rows": 6454694,
    "distinct_left_streets": 20211,
    "matched_left_streets": 9358,
    "match_rate_left": 0.463,
    "tickets_on_matched_streets": 6348001,
    "ticket_coverage": 0.9835,
-   "notes": "Ticket counts attach at street level. Source files are the reference project's raw slice (6,454,695 rows of which 6,454,694 carry a valid date), not re-downloaded."
+   "notes": "Ticket counts attach at street level. Source files are the sister project's raw ticket files (6,454,695 rows of which 6,454,694 carry a valid date), not re-downloaded."
   },
   {
-   "join": "parking occupancy -> Green P car parks",
+   "join": "Parking occupancy matched to Green P car parks",
    "method": "car park number equality: Green P id '52' <-> occupancy 'CP52'; latest year/quarter kept",
    "left_rows": 252,
    "matched_left_rows": 149,
