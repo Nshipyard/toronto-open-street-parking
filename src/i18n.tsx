@@ -13,10 +13,10 @@ const en = {
   nav: { explorer: "Search", gaps: "What's missing", developers: "Developers", data: "Data", back: "All projects" },
   hero: {
     kicker: "Open Nshipyard · Toronto Open Street Parking",
-    title: "Toronto street parking data in one file",
-    lead: "Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.",
-    sub: "Toronto's Parking Authority manages about 21,000 paid on-street spaces worth $67.7 million a year. The City knows where every stall, sign, and meter is: a contractor drives the streets with cameras and builds that inventory. It is not open data. This page is the combined result: every public dataset that describes street parking, combined into one open file of 50,027 street segments, searchable street by street. What could not be combined is documented as gaps, with the search evidence for each one.",
-    cta1: "Search the combined data",
+    title: "Parking rules and tickets for all 13,344 Toronto streets",
+    lead: "Toronto takes in $67.7 million a year from about 21,000 paid street parking spaces, and does not publish where any of them are.",
+    sub: "This page is the public record instead: one entry for every street, with the parking rules that apply to it, the tickets written on it, its bike lanes and its permit areas, covering all 13,344 streets and 50,027 street segments, searchable street by street. The map of the paid spaces exists. The city paid a contractor to build it with camera cars. It is not open data. It is the first of the 8 gaps listed on this page, each with the search evidence behind it.",
+    cta1: "Search any street",
     cta2: "What the city does not publish",
   },
   statsLabels: [
@@ -27,7 +27,7 @@ const en = {
   ],
   search: {
     kicker: "The combined dataset",
-    title: "Search the combined data",
+    title: "Search any street",
     body: "One file: 50,027 street segments on 13,344 streets. Each segment carries its road class, its address range, the cycling network and permit area that touch it, the facilities within 250 metres of it, and the distance to the nearest Green P car park. Each street adds the Chapter 950 rules that name it and its 2023-2025 ticket count; those two are published per street, not per segment. Type a street name to see it all together.",
     placeholder: "Type a street name, e.g. Yonge, Queen St W, Danforth…",
     statSegments: "Segments",
@@ -131,7 +131,7 @@ const en = {
     download: "Download",
   },
   combinedDl: {
-    title: "Download the combined file",
+    title: "Download the data",
     note: "One row per street segment, with every attribute combined onto it.",
     csv: "Segments, CSV",
     geojson: "Segments, GeoJSON",
@@ -187,10 +187,10 @@ const fr: Dict = {
   nav: { explorer: "Recherche", gaps: "Ce qui manque", developers: "Développeurs", data: "Données", back: "Tous les projets" },
   hero: {
     kicker: "Open Nshipyard · Toronto Open Street Parking",
-    title: "Les données sur le stationnement sur rue de Toronto dans un seul fichier",
-    lead: "Chaque jeu de données ouvert de Toronto sur le stationnement sur rue, joint en un seul fichier : 50 027 segments de rue. Les routes de déneigement et les emplacements des places de stationnement n'y figurent pas, parce que la ville ne les publie pas.",
-    sub: "La Toronto Parking Authority gère environ 21 000 places payantes sur rue, d'une valeur de 67,7 millions de dollars par an. La Ville sait où se trouve chaque place, chaque panneau et chaque parcomètre : un entrepreneur parcourt les rues avec des caméras et construit cet inventaire. Ce n'est pas une donnée ouverte. Cette page est le résultat combiné : chaque jeu de données public qui décrit le stationnement sur rue, combiné en un seul fichier ouvert de 50 027 segments de rue, consultable rue par rue. Ce qui n'a pas pu être combiné est documenté comme des manques, avec les preuves de recherche pour chacun.",
-    cta1: "Rechercher dans les données combinées",
+    title: "Règles de stationnement et contraventions pour les 13 344 rues de Toronto",
+    lead: "Toronto perçoit 67,7 millions de dollars par année d'environ 21 000 places de stationnement sur rue payantes, et ne publie l'emplacement d'aucune d'entre elles.",
+    sub: "Cette page tient lieu de registre public : une entrée pour chaque rue, avec les règles de stationnement qui s'y appliquent, les contraventions qui y ont été données, ses voies cyclables et ses zones de permis, pour les 13 344 rues et 50 027 segments de rue, consultable rue par rue. La carte des places payantes existe. La ville a payé un entrepreneur pour la bâtir avec des voitures-caméras. Ce ne sont pas des données ouvertes. C'est la première des 8 lacunes énumérées sur cette page, chacune avec les preuves de recherche à l'appui.",
+    cta1: "Rechercher une rue",
     cta2: "Ce que la ville ne publie pas",
   },
   statsLabels: [
@@ -201,7 +201,7 @@ const fr: Dict = {
   ],
   search: {
     kicker: "Le jeu de données combiné",
-    title: "Rechercher dans les données combinées",
+    title: "Rechercher une rue",
     body: "Un seul fichier : 50 027 segments de rue sur 13 344 rues. Chaque segment porte sa classe de route, sa plage d'adresses, le réseau cyclable et la zone de permis qui le touchent, les installations à moins de 250 mètres de lui, et la distance jusqu'au parc Green P le plus proche. Chaque rue ajoute les règles du chapitre 950 qui la nomment et son compte de contraventions 2023-2025; ces deux-là sont publiés par rue, non par segment. Tapez un nom de rue pour tout voir ensemble.",
     placeholder: "Tapez un nom de rue, p. ex. Yonge, Queen St W, Danforth…",
     statSegments: "Segments",
@@ -305,7 +305,7 @@ const fr: Dict = {
     download: "Télécharger",
   },
   combinedDl: {
-    title: "Télécharger le fichier combiné",
+    title: "Télécharger les données",
     note: "Une ligne par segment de rue, avec tous les attributs combinés dessus.",
     csv: "Segments, CSV",
     geojson: "Segments, GeoJSON",

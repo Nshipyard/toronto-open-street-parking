@@ -1,6 +1,8 @@
-# Toronto street parking data in one file
+# Parking rules and tickets for all 13,344 Toronto streets
 
-**Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.** Eleven of the inventoried datasets are combined into the file; the rest are documented as gaps, each with the search evidence behind it.
+**Toronto takes in $67.7 million a year from about 21,000 paid street parking spaces, and does not publish where any of them are.**
+
+This page is the public record instead: one entry for every street, with the parking rules that apply to it, the tickets written on it, its bike lanes and its permit areas, covering all 13,344 streets and 50,027 street segments, searchable street by street. The map of the paid spaces exists. The city paid a contractor to build it with camera cars. It is not open data. It is the first of the 8 gaps listed on this page, each with the search evidence behind it.
 
 An [Open Nshipyard](https://canada.nshipyard.com) civic data project. Not affiliated with the City of Toronto.
 

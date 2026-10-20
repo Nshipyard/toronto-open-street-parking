@@ -8,7 +8,7 @@ import "./globals.css";
 import { LangProvider } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: "Toronto street parking data in one file",
+  title: "Parking rules and tickets for all 13,344 Toronto streets",
   description:
     "Toronto street parking data combined into one open file of 50,027 street segments, searchable street by street and segment by segment, plus the gap report on what the city does not publish. REST API, OpenAPI docs, and MCP tools. Open data, MIT licensed.",
 };
