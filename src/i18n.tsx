@@ -96,7 +96,7 @@ const en = {
     },
   },
   map: {
-    title: "Map: every Toronto street",
+    title: "Toronto street parking rules and tickets",
     tickets: "Parking tickets",
     rules: "No-parking rules",
     bike: "Bike lanes",
@@ -285,7 +285,7 @@ const fr: Dict = {
     },
   },
   map: {
-    title: "Carte : toutes les rues de Toronto",
+    title: "Règles de stationnement et contraventions à Toronto",
     tickets: "Contraventions de stationnement",
     rules: "Règles d'interdiction de stationner",
     bike: "Voies cyclables",
