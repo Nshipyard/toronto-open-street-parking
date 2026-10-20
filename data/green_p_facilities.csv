@@ -1,0 +1,253 @@
+carpark_id,address,lat,lon,type,capacity,rate_text,rate_half_hour,occupancy_period,occupancy_peak_pct,occupancy_total_spaces
+1,20 Charles Street East,43.669282,-79.385289,Garage,641,$2.50 / Half Hour,2.50,2026 Q1,18%,646
+3,13 Isabella Street,43.667577,-79.384707,Surface,33,$3.00 / Half Hour,3.00,2026 Q1,73%,30
+5,15 Wellesley Street East,43.664837,-79.383591,Surface,135,$3.00 / Half Hour,3.00,2026 Q1,54%,126
+11,21 Pleasant Blvd.,43.687092,-79.39285,Garage,557,$3.00 / Half Hour,3.00,,,
+12,30 Alvin Avenue,43.689191,-79.3927,Surface,188,$3.50 / Half Hour,3.50,,,
+13,20 Delisle Avenue,43.689,-79.395586,Garage,238,$3.00 / Half Hour,3.00,2026 Q1,29%,240
+17,716 Pape Avenue,43.679713,-79.345375,Surface,70,$1.75 / Half Hour,1.75,2026 Q1,75%,74
+18,351 Keele Street,43.664581,-79.463993,Surface,77,$1.50 / Half Hour,1.50,2026 Q1,70%,72
+19,385 Pacific Avenue,43.664736,-79.468124,Surface,71,$1.50 / Half Hour,1.50,2026 Q1,73%,67
+20,101 Cedarvale Avenue,43.686541,-79.310957,Surface,37,$1.50 / Half Hour,1.50,2026 Q1,50%,35
+21,72 Amroth Avenue,43.685377,-79.311708,Surface,54,$1.50 / Half Hour,1.50,2026 Q1,50%,50
+26,37 Queen Street East,43.652705,-79.377218,Garage,620,$3.50 / Half Hour,3.50,2026 Q1,52%,631
+28,670 Pape Avenue,43.678146,-79.344774,Surface,76,$1.50 / Half Hour,1.50,2026 Q1,47%,74
+29,75 Holly Street,43.706469,-79.396348,Garage,460,$2.00 / Half Hour,2.00,2026 Q1,12%,302
+34,20 Dundas Square,43.656004,-79.379933,Garage,253,$3.00 / Half Hour,3.00,2026 Q1,58%,262
+36,110 Queen Street West (Nathan Phillips Square Garage) - reduced parking - Sept. to Dec.,43.651696,-79.383699,Garage,2027,$3.50 / Half Hour,3.50,2026 Q1,28%,1636
+39,20 Castlefield Avenue,43.711828,-79.400082,Surface,163,$3.00 / Half Hour,3.00,,,
+41,7 Norton Avenue,43.678365,-79.443882,Surface,64,$1.75 / Half Hour,1.75,2026 Q1,60%,62
+42,91 Via Italia,43.676817,-79.445239,Garage,169,$1.00 / Half Hour,1.00,2026 Q1,29%,169
+43,2 Church Street (St. Lawrence Garage),43.64644,-79.373066,Garage,2008,$2.50 / Half Hour,2.50,2026 Q1,16%,1972
+44,14 Fuller Avenue,43.640788,-79.439542,Surface,53,$1.50 / Half Hour,1.50,2026 Q1,47%,42
+45,111 Broadview Avenue,43.659179,-79.349774,Surface,92,$1.00 / Half Hour,1.00,2026 Q1,56%,92
+47,125 Burnaby Blvd,43.704445,-79.412076,Surface,154,$1.50 / Half Hour,1.50,2026 Q1,55%,155
+48,85 Lee Avenue,43.670462,-79.297961,Surface,68,$1.50 / Half Hour,1.50,2026 Q1,61%,68
+49,30 Roehampton Avenue,43.708276,-79.397786,Garage,153,$2.50 / Half Hour,2.50,2026 Q1,35%,187
+51,365 Lippincott Street,43.665054,-79.409662,Surface,144,$2.00 / Half Hour,2.00,2026 Q1,54%,136
+52,40 York Street,43.645536,-79.382724,Garage,312,$4.00 / Half Hour,4.00,2026 Q1,41%,311
+53,803 Richmond Street West,43.644546,-79.410778,Surface,49,$2.00 / Half Hour,2.00,2026 Q1,56%,48
+55,23 Bedford Park Avenue,43.72677,-79.40433,Surface,42,$1.00 / Half Hour,1.00,2026 Q1,54%,42
+58,9 Bedford Road ,43.668958,-79.39712,Garage,399,$3.00 / Half Hour,3.00,2026 Q1,51%,371
+64,265 Durie Street,43.650881,-79.479014,Surface,155,$1.50 / Half Hour,1.50,2026 Q1,70%,144
+68,20 St. Andrew Street (Kensington Garage),43.654303,-79.400079,Garage,450,$2.50 / Half Hour,2.50,2026 Q1,27%,417
+71,35 Bellevue Avenue,43.654184,-79.403176,Surface,91,$2.50 / Half Hour,2.50,,,
+78,35 Erindale Avenue,43.677316,-79.357467,Surface,93,$2.00 / Half Hour,2.00,2026 Q1,70%,94
+79,405 Sherbourne Street,43.66452,-79.373502,Surface,110,$1.75 / Half Hour,1.75,2026 Q1,75%,91
+80,400 Keele Street,43.66611,-79.465045,Surface,35,$1.25 / Half Hour,1.25,2026 Q1,80%,35
+81,695 Lansdowne Avenue,43.658969,-79.442739,Surface,40,$1.50 / Half Hour,1.50,2026 Q1,268%,16
+82,9 Emerson Ave.,43.659412,-79.440143,Surface,56,$1.25 / Half Hour,1.25,2026 Q1,63%,49
+84,9 Salem Avenue,43.661011,-79.431667,Surface,35,$1.25 / Half Hour,1.25,2026 Q1,74%,33
+85,557 Palmerston Avenue,43.665039,-79.413579,Surface,55,$2.00 / Half Hour,2.00,2026 Q1,80%,55
+87,14 Arundel Avenue,43.678456,-79.351223,Surface,83,$1.50 / Half Hour,1.50,2026 Q1,63%,37
+88,25 Ferrier Avenue,43.679007,-79.348379,Surface,47,$1.50 / Half Hour,1.50,2026 Q1,82%,46
+89,20 Eaton Avenue,43.679954,-79.343948,Surface,70,$1.50 / Half Hour,1.50,,,
+90,17 Eaton Avenue,43.680078,-79.343197,Surface,30,$1.50 / Half Hour,1.50,2026 Q1,65%,30
+91,265 Armadale Avenue,43.650283,-79.483039,Surface,148,$1.50 / Half Hour,1.50,2026 Q1,58%,144
+93,675 Manning Avenue,43.664651,-79.416014,Surface,49,$2.00 / Half Hour,2.00,2026 Q1,81%,49
+96,10 Portland Street,43.641635,-79.399159,Garage,37,$2.00 / Half Hour,2.00,2026 Q1,97%,37
+104,"745 Ossington Avenue, 16 Carling Avenue",43.662431,-79.425648,Surface,45,$2.00 / Half Hour,2.00,2026 Q1,67%,46
+106,15 Denison Avenue,43.648412,-79.400307,Surface,120,$2.00 / Half Hour,2.00,2026 Q1,54%,120
+107,251 MacPherson Avenue,43.677378,-79.40035,Surface,40,$1.00 / Half Hour,1.00,2026 Q1,24%,40
+109,51 Aberdeen Avenue,43.664703,-79.36905,Surface,35,$2.00 / Half Hour,2.00,2026 Q1,55%,35
+110,1612 Danforth Avenue,43.683577,-79.322995,Surface,25,$1.50 / Half Hour,1.50,2026 Q1,75%,22
+111,74 Clinton Street,43.656159,-79.41448,Garage,79,$1.50 / Half Hour,1.50,,,
+116,255 Kennedy Avenue,43.65168,-79.475119,Surface,56,$1.50 / Half Hour,1.50,2026 Q1,65%,56
+125,323 Richmond Street East,43.653381,-79.368582,Garage,258,$2.50 / Half Hour,2.50,2026 Q1,53%,252
+130,7 Bartlett Avenue,43.660899,-79.433013,Surface,37,$1.00 / Half Hour,1.00,2026 Q1,63%,37
+131,912 Eglinton Avenue West,43.700543,-79.428073,Surface,26,$1.25 / Half Hour,1.25,2026 Q1,62%,26
+133,20 Prescott Avenue ,43.675143,-79.457513,Surface,7,$1.00 / Half Hour,1.00,,,
+137,77 Gough Avenue,43.679481,-79.346287,Surface,17,$1.50 / Half Hour,1.50,2026 Q1,83%,17
+139,6 Sherwood Avenue,43.713751,-79.399213,Surface,46,$2.00 / Half Hour,2.00,,,
+141,141 Greenlaw Avenue,43.676198,-79.447739,Surface,53,$1.00 / Half Hour,1.00,2026 Q1,45%,54
+142,31 Langford Avenue,43.680613,-79.340751,Surface,27,$1.50 / Half Hour,1.50,2026 Q1,61%,27
+143,265 Willard Avenue,43.650431,-79.481771,Surface,88,$1.50 / Half Hour,1.50,2026 Q1,53%,90
+144,376 Clinton Street,43.664441,-79.41758,Surface,33,$1.50 / Half Hour,1.50,2026 Q1,68%,34
+146,573 Gerrard Street East,43.665202,-79.353164,Surface,37,$1.00 / Half Hour,1.00,2026 Q1,75%,36
+149,12 Woodycrest Avenue,43.68035,-79.342339,Surface,35,$1.50 / Half Hour,1.50,2026 Q1,43%,35
+150,40 Larch Street,43.652954,-79.397024,Garage,357,$2.00 / Half Hour,2.00,2026 Q1,31%,332
+152,25 Glenforest Road,43.730266,-79.402734,Surface,26,$1.50 / Half Hour,1.50,,,
+155,995 Eglinton Avenue West,43.699612,-79.431131,Surface,33,$1.25 / Half Hour,1.25,2026 Q1,42%,33
+156,18 Ferrier Avenue,43.678945,-79.348798,Surface,23,$1.50 / Half Hour,1.50,2026 Q1,58%,23
+157,709 Millwood Road,43.704181,-79.374053,Garage,20,$1.00 / Half Hour,1.00,2026 Q1,78%,20
+158,1325 Queen Street West,43.64095,-79.433856,Surface,32,$1.50 / Half Hour,1.50,2026 Q1,94%,32
+161,30 St. Clair Avenue West,43.688007,-79.395468,Garage,173,$2.00 / Half Hour,2.00,,,
+164,453 Spadina Road,43.689543,-79.412946,Surface,55,$1.50 / Half Hour,1.50,2026 Q1,84%,55
+167,18 Ossington Avenue,43.644655,-79.419286,Surface,20,$1.50 / Half Hour,1.50,2026 Q1,115%,20
+168,146 Harrison Street,43.650423,-79.424404,Surface,79,$1.50 / Half Hour,1.50,2026 Q1,68%,79
+170,117 Hammersmith Avenue,43.671707,-79.294358,Surface,30,$1.50 / Half Hour,1.50,2026 Q1,47%,29
+171,730 Mt. Pleasant Road,43.706702,-79.38975,Garage,53,$2.00 / Half Hour,2.00,2026 Q1,42%,53
+173,737 Rhodes Avenue,43.682926,-79.324476,Surface,24,$1.50 / Half Hour,1.50,2026 Q1,50%,24
+174,151 Hiawatha Road,43.672598,-79.322941,Surface,50,$1.00 / Half Hour,1.00,,,
+178,650 Mt. Pleasant Road,43.704763,-79.388956,Garage,68,$1.50 / Half Hour,1.50,2026 Q1,41%,68
+179,653 Gerrard Street East,43.665784,-79.350195,Surface,30,$1.00 / Half Hour,1.00,2026 Q1,72%,30
+180,268 Rhodes Ave,43.672047,-79.320366,Surface,38,$1.00 / Half Hour,1.00,2026 Q1,68%,39
+181,1155 King Street West,43.637863,-79.424011,Surface,269,$2.00 / Half Hour,2.00,,,
+183,166 Woodbine Ave,43.668252,-79.306226,Surface,21,$1.00 / Half Hour,1.00,2026 Q1,46%,21
+184,192 Boardwalk Dr,43.668004,-79.307384,Surface,24,$1.00 / Half Hour,1.00,2026 Q1,45%,24
+185,116 Joseph Duggan Rd,43.667724,-79.308522,Surface,24,$1.00 / Half Hour,1.00,2026 Q1,41%,24
+186,118 Sarah Ashbridge Ave,43.667445,-79.309487,Surface,24,$1.00 / Half Hour,1.00,2026 Q1,40%,24
+187,116 Winners Circle,43.667107,-79.31074,Surface,10,$1.00 / Half Hour,1.00,2026 Q1,52%,10
+188,157 Beatrice Street,43.654669,-79.416411,Surface,18,$1.50 / Half Hour,1.50,2026 Q1,64%,18
+193,1675 Lakeshore Blvd. E. (Parks),43.662417,-79.311188,Surface,292,$1.00 / Half Hour,1.00,,,
+194,20 Ashbridges Bay Park Road (Parks),43.660056,-79.311365,Surface,270,$1.00 / Half Hour,1.00,,,
+195,15 Price St,43.679814,-79.390007,Surface,71,$1.50 / Half Hour,1.50,,,
+200,1167 Eastern Avenue,43.665986,-79.313049,Surface,66,$1.00 / Half Hour,1.00,2026 Q1,32%,66
+202,1141 Eastern Avenue,43.66566,-79.314079,Surface,18,$1.00 / Half Hour,1.00,2026 Q1,58%,18
+204,1117 Dundas Street West,43.649267,-79.420135,Surface,37,$1.50 / Half Hour,1.50,2026 Q1,86%,37
+205,465 Huron Street,43.667778,-79.401648,Surface,15,$2.00 / Half Hour,2.00,,,
+206,2001 Lake Shore Blvd. West (Parks),43.634103,-79.469036,Surface,185,$1.00 / Half Hour,1.00,,,
+207,2001 Lake Shore Blvd. West (Parks),43.637123,-79.462266,Surface,187,$1.00 / Half Hour,1.00,,,
+208,1575 Lake Shore Blvd. W. (Parks),43.637473,-79.451301,Surface,193,$1.00 / Half Hour,1.00,,,
+209,300 Remembrance Drive ,43.633089,-79.408743,Surface,65,$1.00 / Half Hour,1.00,,,
+210,1275 Lakeshore Blvd. W. (Parks),43.633856,-79.438274,Surface,120,$1.00 / Half Hour,1.00,,,
+212,363 Adelaide Street West,43.646712,-79.39491,Surface,23,$3.50 / Half Hour,3.50,2026 Q1,95%,22
+215,74 Yorkville Avenue,43.670936,-79.392222,Garage,172,$3.50 / Half Hour,3.50,2026 Q1,75%,175
+216,205 McCaul Street,43.657231,-79.392475,Surface,38,$3.00 / Half Hour,3.00,2026 Q1,79%,39
+217,1445 Bathurst Street,43.682499,-79.41787,Surface,25,$1.50 / Half Hour,1.50,2026 Q1,87%,48
+218,3354 Dundas Street West,43.665668,-79.4819,Surface,13,$1.00 / Half Hour,1.00,2026 Q1,99%,11
+219,87 Richmond Street East,43.652464,-79.374326,Surface,20,$2.50 / Half Hour,2.50,2026 Q1,92%,20
+220,789 St. Clair Avenue West,43.680738,-79.429629,Surface,18,$1.00 / Half Hour,1.00,,,
+223,1501 Yonge Street,43.68926,-79.394269,Surface,37,$2.00 / Half Hour,2.00,,,
+224,34 Hanna Avenue,43.638242,-79.419812,Surface,184,$2.00 / Half Hour,2.00,2026 Q1,69%,146
+225,80 Clinton Street,43.656346,-79.414555,Surface,25,$1.50 / Half Hour,1.50,,,
+226,646 St. Clair Avenue West,43.682103,-79.4242,Surface,18,$1.25 / Half Hour,1.25,2026 Q1,66%,18
+227,105 Spadina Avenue,43.64668,-79.395233,Surface,14,$3.50 / Half Hour,3.50,2026 Q1,144%,14
+228,11 Kenwood Avenue,43.68298,-79.422065,Surface,25,$1.50 / Half Hour,1.50,2026 Q1,68%,25
+229,110 Dovercourt Road,43.64384,-79.422762,Surface,8,$1.50 / Half Hour,1.50,2026 Q1,102%,8
+230,31A Parliament Street,43.649553,-79.361694,Surface,230,$2.25 / Half Hour,2.25,,,
+231,19 Spadina Road,43.667974,-79.404218,Surface,65,$2.00 / Half Hour,2.00,,,
+233,44 Parliament Street,43.650361,-79.362445,Surface,120,$2.50 / Half Hour,2.50,,,
+235,2201 Dundas Street West,43.653388,-79.451323,Surface,10,$1.50 / Half Hour,1.50,2026 Q1,70%,10
+238,9 Madison Ave.,43.667558,-79.4028,Surface,38,$2.00 / Half Hour,2.00,,,
+240,700 St. Clair Ave West,43.681863,-79.42654,Surface,18,$1.50 / Half Hour,1.50,,,
+241,9 Bonar Place,43.652778,-79.433822,Surface,34,$1.00 / Half Hour,1.00,2026 Q1,71%,34
+243,115 Unwin Avenue,43.641425,-79.341888,Surface,123,$1.00 / Half Hour,1.00,,,
+244,1439 Danforth Avenue,43.682646,-79.326321,Surface,20,$1.50 / Half Hour,1.50,2026 Q1,95%,18
+246,31 Blackthorn Ave,43.675458,-79.458283,Surface,37,$1.00 / Half Hour,1.00,,,
+248,136 Broadview Avenue,43.659822,-79.350373,Surface,22,$1.50 / Half Hour,1.50,2026 Q1,73%,22
+249,1670 Bayview Ave,43.7074,-79.376543,Surface,33,$2.00 / Half Hour,2.00,,,
+251,201 Claremont Street,43.651657,-79.41125,Surface,43,$1.00 / Half Hour,1.00,2026 Q1,61%,43
+252,154 Westmount Avenue,43.678907,-79.442248,Surface,14,$1.25 / Half Hour,1.25,,,
+256,1624 Queen Street West,43.639526,-79.442441,Surface,33,$1.00 / Half Hour,1.00,2026 Q1,71%,33
+259,4 Spadina Road,43.666878,-79.404116,Surface,51,$1.50 / Half Hour,1.50,,,
+260,94 Northcliffe Blvd.,43.677809,-79.440661,Surface,13,$1.25 / Half Hour,1.25,2026 Q1,80%,13
+261,45 Abell Street,43.641902,-79.42387,Garage,124,$1.50 / Half Hour,1.50,2026 Q1,60%,124
+263,130 Elizabeth Street - Toronto Coach Terminal,43.655632,-79.385785,Surface,27,$4.00 / Half Hour,4.00,,,
+266,250 Fort York Blvd. ,43.637208,-79.406461,Surface,49,$1.00 / Half Hour,1.00,,,
+267,70 Distillery Lane,43.65012,-79.357531,Garage,103,$2.25 / Half Hour,2.25,,,
+268,271 Front Street East,43.651254,-79.362971,Surface,83,$2.50 / Half Hour,2.50,,,
+269,1010 Yonge St.,43.675942,-79.389439,Surface,48,$1.50 / Half Hour,1.50,,,
+271,800 Fleet Street,43.636821,-79.409705,Surface,94,$1.00 / Half Hour,1.00,,,
+275,1030 King Street West - garage entrance via Shank St.,43.641907,-79.416237,Garage,152,$1.50 / Half Hour,1.50,,,
+277,242 Danforth Avenue,43.677052,-79.354873,Surface,19,$2.00 / Half Hour,2.00,2026 Q1,78%,19
+279,287 Rushton Road,43.681835,-79.427703,Surface,16,$1.50 / Half Hour,1.50,2026 Q1,37%,17
+282,838 Broadview Ave.,43.6785,-79.358873,Surface,11,$1.00 / Half Hour,1.00,2026 Q1,76%,11
+283,100 Cooperage Street,43.653573,-79.357214,Garage,86,$1.50 / Half Hour,1.50,,,
+284,83 Tannery Road,43.65392,-79.354923,Garage,27,$1.50 / Half Hour,1.50,,,
+285,40 Rolling Mills Rd.,43.652664,-79.355743,Garage,25,$1.50 / Half Hour,1.50,,,
+286,51 Dockside Dr. ,43.643821,-79.365868,Garage,307,$2.00 / Half Hour,2.00,2026 Q1,19%,306
+287,1091 Eastern Avenue,43.664603,-79.318234,Surface,45,$1.00 / Half Hour,1.00,,,
+288,292 Brunswick Avenue,43.665369,-79.407636,Surface,19,$2.00 / Half Hour,2.00,,,
+289,373 Front Street East,43.65219,-79.359421,Surface,450,$2.00 / Half Hour,2.00,,,
+291,320 Tweedsmuir Avenue,43.68586,-79.414338,Garage,26,$1.25 / Half Hour,1.25,,,
+300,185 Queens Quay East,43.644344,-79.366257,Surface,83,$2.00 / Half Hour,2.00,,,
+302,545 Lake Shore Boulevard West,43.636456,-79.398691,Surface,110,$3.00 / Half Hour,3.00,,,
+303,136 Wineva Ave.,43.671254,-79.295958,Surface,28,$1.25 / Half Hour,1.25,,,
+400,10 Kingsdale Avenue,43.770373,-79.41257,Surface,52,$1.25 / Half Hour,1.25,2026 Q1,44%,53
+401,246 Brooke Avenue,43.733158,-79.420295,Surface,97,$1.50 / Half Hour,1.50,2026 Q1,67%,94
+402,10 Empress Avenue,43.769459,-79.412484,Surface,68,$2.50 / Half Hour,2.50,2026 Q1,69%,67
+403,10 Harlandale Avenue,43.762168,-79.412441,Surface,112,$2.50 / Half Hour,2.50,,,
+404,95 Beecroft Road,43.763594,-79.414051,Garage,387,$2.00 / Half Hour,2.00,2026 Q1,15%,386
+410,180 Beecroft Road,43.767569,-79.416143,Surface,173,$2.00 / Half Hour,2.00,,,
+411,1880 Avenue Road,43.732182,-79.419576,Surface,32,$1.25 / Half Hour,1.25,2026 Q1,32%,32
+412,11 Finch Avenue West,43.779321,-79.416572,Surface,62,$2.00 / Half Hour,2.00,2026 Q1,67%,62
+413,4576 Yonge Street,43.756023,-79.410403,Surface,17,$2.00 / Half Hour,2.00,,,
+414,3885 Yonge Street,43.741786,-79.40595,Surface,129,$1.25 / Half Hour,1.25,2026 Q1,29%,139
+418,68 Sheppard Avenue West,43.76082,-79.414662,Surface,34,$1.50 / Half Hour,1.50,2026 Q1,63%,30
+419,5667 Yonge Street,43.781482,-79.415703,Surface,23,$2.00 / Half Hour,2.00,,,
+424,2170 Bayview avenue,43.723875,-79.379571,Surface,69,$2.00 / Half Hour,2.00,,,
+500,7 Jackson Avenue,43.648333,-79.509038,Surface,40,$1.00 / Half Hour,1.00,2026 Q1,38%,40
+501,11 Grenview Blvd. N.,43.648738,-79.507853,Surface,83,$1.00 / Half Hour,1.00,2026 Q1,41%,83
+502,342 Prince Edward Drive N.,43.648853,-79.505531,Surface,43,$1.00 / Half Hour,1.00,2026 Q1,40%,43
+503,"12 Willingdon Blvd. - partial construction, reduced spaces",43.648389,-79.510632,Surface,65,$1.50 / Half Hour,1.50,2026 Q1,57%,64
+504,9 Willingdon Blvd.,43.648187,-79.5102,Surface,116,$1.00 / Half Hour,1.00,2026 Q1,23%,116
+505,934 Royal York Road,43.646766,-79.511318,Surface,11,$1.50 / Half Hour,1.50,2026 Q1,64%,11
+506,140 Fifth Street,43.60169,-79.503422,Surface,53,$1.00 / Half Hour,1.00,2026 Q1,39%,52
+507,66 Third Street,43.601216,-79.500697,Surface,24,$1.00 / Half Hour,1.00,2026 Q1,34%,24
+508,128 Eighth Street,43.600906,-79.506769,Surface,45,$1.00 / Half Hour,1.00,2026 Q1,21%,58
+509,105 Fourth Street,43.600781,-79.501415,Surface,22,$0.00 / Half Hour,0.00,,,
+510,3239 Lake Shore Boulevard West,43.596988,-79.521709,Surface,22,$1.00 / Half Hour,1.00,2026 Q1,51%,24
+511,120 Sixth Street,43.600152,-79.50399,Surface,54,$1.00 / Half Hour,1.00,2026 Q1,32%,58
+512,3220 Bloor Street West,43.645959,-79.518067,Surface,69,$1.50 / Half Hour,1.50,2026 Q1,29%,68
+513,575 Royal York Road,43.626997,-79.502724,Surface,28,$1.00 / Half Hour,1.00,2026 Q1,32%,28
+514,139 ISLINGTON AVE.,43.601317,-79.50531,Surface,11,$1.00 / Half Hour,1.00,,,
+516,WOOLGAR LANEWAY REAR OF 1124 THE QUEENSWAY,43.623355,-79.519,Surface,11,$1.00 / Half Hour,1.00,,,
+517,15 Primrose Avenue,43.614299,-79.489882,Surface,23,$1.00 / Half Hour,1.00,2026 Q1,43%,23
+519,5 Dayton Avenue,43.625584,-79.503551,Surface,15,$1.00 / Half Hour,1.00,2026 Q1,32%,16
+520,20 Royalavon Crescent,43.645253,-79.532733,Surface,62,$1.00 / Half Hour,1.00,2026 Q1,38%,59
+521,7 Monkton Avenue,43.644336,-79.521886,Surface,25,$2.00 / Half Hour,2.00,2026 Q1,61%,25
+522,2195 Lake shore Blvd West (Parks),43.622774,-79.476734,Surface,228,$1.00 / Half Hour,1.00,,,
+523,2225 Lake shore Blvd West (Parks),43.62003,-79.480667,Surface,80,$1.00 / Half Hour,1.00,,,
+524,2225 Lake shore Blvd West (Parks),43.619641,-79.47947,Surface,144,$1.00 / Half Hour,1.00,,,
+525,2225 Lake shore Blvd West (Parks),43.616982,-79.477247,Surface,28,$1.00 / Half Hour,1.00,,,
+526,2225 Lake shore Blvd West (Parks),43.61478,-79.478059,Surface,22,$1.00 / Half Hour,1.00,,,
+527,2225 Lake shore Blvd West (Parks),43.613359,-79.479926,Surface,10,$1.00 / Half Hour,1.00,,,
+528,5 Colonel Samuel Smith Park Drive,43.597886,-79.521119,Surface,52,$1.00 / Half Hour,1.00,,,
+529,65 Colonel Samuel Smith Park Drive,43.593757,-79.516468,Surface,210,$1.00 / Half Hour,1.00,,,
+532,14 Barkwin Dr.,43.738381,-79.565283,Surface,23,$1.00 / Half Hour,1.00,2026 Q1,20%,23
+533,2300 Lake shore Boulevard West,43.618474,-79.486739,Surface,23,$1.00 / Half Hour,1.00,2026 Q1,28%,24
+534,15 Marine Parade Drive,43.62679,-79.476745,Surface,14,$1.00 / Half Hour,1.00,,,
+600,550 Mortimer Avenue,43.690592,-79.327503,Surface,20,$2.00 / Half Hour,2.00,2026 Q1,62%,18
+602,1503 Bayview Avenue,43.703909,-79.374332,Surface,25,$1.25 / Half Hour,1.25,2026 Q1,65%,24
+651,1169 Weston Road,43.687441,-79.4903,Surface,47,$1.00 / Half Hour,1.00,2026 Q1,58%,36
+652,301 Scott Road,43.690343,-79.472383,Surface,14,$1.00 / Half Hour,1.00,2026 Q1,64%,10
+653,17 Riverview Gardens,43.649119,-79.486397,Surface,113,$1.00 / Half Hour,1.00,2026 Q1,52%,95
+654,16 Riverview Gardens,43.648894,-79.486663,Surface,54,$1.00 / Half Hour,1.00,2026 Q1,38%,59
+655,168 Chiltern Hill Road,43.700241,-79.428223,Garage,68,$1.00 / Half Hour,1.00,2026 Q1,34%,68
+656,1A Mould Avenue,43.668423,-79.486953,Surface,7,$0.00 / Half Hour,0.00,,,
+657,271A Scarlett Road,43.67789,-79.506555,Surface,11,$1.00 / Half Hour,1.00,2026 Q1,17%,11
+658,2054 Dufferin Street,43.686611,-79.446806,Surface,94,$1.00 / Half Hour,1.00,2026 Q1,25%,49
+659,341 Oakwood Avenue,43.686479,-79.43819,Surface,22,$1.00 / Half Hour,1.00,,,
+660,406 Oakwood Avenue,43.688069,-79.439317,Surface,19,$1.00 / Half Hour,1.00,2026 Q1,57%,17
+661,433 Rogers Road,43.682507,-79.463983,Surface,28,$1.00 / Half Hour,1.00,2026 Q1,27%,28
+663,1 Shortt Street,43.695951,-79.451795,Surface,130,$1.00 / Half Hour,1.00,2026 Q1,27%,138
+667,1531 Eglinton Avenue West,43.697588,-79.440712,Surface,23,$1.00 / Half Hour,1.00,2026 Q1,41%,20
+668,2700 Eglinton Avenue West,43.690203,-79.477919,Surface,109,$2.00 / Half Hour,2.00,,,
+669,2700 Eglinton Avenue West,43.690792,-79.478585,Surface,38,$2.00 / Half Hour,2.00,,,
+670,2053 Dufferin Street,43.6866,-79.446383,Surface,23,$1.00 / Half Hour,1.00,,,
+674,2623 Eglinton Avenue West,43.689981,-79.475222,Surface,13,$1.00 / Half Hour,1.00,2026 Q1,24%,12
+675,4 Rosemount Avenue,43.701391,-79.513819,Surface,34,$1.00 / Half Hour,1.00,,,
+700,101 Grangeway Avenue,43.775378,-79.250093,Surface,261,$1.00 / Half Hour,1.00,2026 Q1,7%,255
+701,197 Blantyre Avenue,43.68177,-79.281496,Surface,83,$1.00 / Half Hour,1.00,2026 Q1,29%,83
+702,1 Brimley Road (Bluffer's Park),43.70664,-79.235437,Surface,232,$1.50 / Half Hour,1.50,,,
+703,1 Brimley Road (Bluffer's Park),43.707446,-79.234632,Surface,128,$1.50 / Half Hour,1.50,,,
+705,1 Brimley Road (Bluffer's Park),43.712603,-79.230051,Surface,168,$1.50 / Half Hour,1.50,,,
+706,284 Milner Avenue,43.789429,-79.238387,Surface,103,$2.00 / Half Hour,2.00,2026 Q1,18%,92
+707,1530 Markham Road - minor capital repairs onsite,43.789507,-79.237915,Surface,24,$2.50 / Half Hour,2.50,,,
+709,1940 Lawrence Avenue East,43.744476,-79.299188,Surface,25,$1.00 / Half Hour,1.00,,,
+710,100 Grangeway Avenue,43.77458,-79.251359,Surface,214,$1.00 / Half Hour,1.00,2026 Q1,32%,215
+711,158 Borough Drive,43.772181,-79.256377,Surface,16,$1.00 / Half Hour,1.00,,,
+801,Kipling South Lot - 400 Munster Avenue,43.636572,-79.534117,Surface,1200,$0.00 / Half Hour,0.00,,,
+802,Islington Main Lot - 3330 Bloor Street West,43.644181,-79.526188,Surface,534,$0.00 / Half Hour,0.00,,,
+804,Islington Lomond Lot - 20 Lomond Drive,43.646774,-79.522862,Surface,283,$0.00 / Half Hour,0.00,,,
+805,Keele Lot - 400 Indian Road,43.655818,-79.457159,Surface,187,$0.00 / Half Hour,0.00,,,
+810,Wilson South Lot - 30 Tippett Road,43.733662,-79.447117,Surface,645,$0.00 / Half Hour,0.00,,,
+811,Wilson Main Lot - 50 Wilson Heights Blvd,43.736244,-79.449177,Surface,885,$0.00 / Half Hour,0.00,,,
+813,Finch West Lot - 18 Hendon Ave,43.782032,-79.416368,Surface,1552,$0.00 / Half Hour,0.00,,,
+814,"Finch East - 814 Willowdale Ave - partial closure, reduced spaces",43.782319,-79.415907,Surface,900,$0.00 / Half Hour,0.00,,,
+815,Leslie Lot - 2760 Old Leslie Street,43.770058,-79.367484,Surface,102,$0.00 / Half Hour,0.00,,,
+816,Don Mills Lot - 1800 Sheppard Ave East,43.775815,-79.346707,Surface,366,$0.00 / Half Hour,0.00,,,
+817,Ellesmere Lot - Near 1050 Ellesmere Road - closed for construction until November 2019,43.766793,-79.276394,Surface,68,$0.00 / Half Hour,0.00,,,
+818,Lawrence East Lot - Near 2450 Lawrence Ave East,43.750477,-79.270269,Surface,90,$0.00 / Half Hour,0.00,,,
+821,Kennedy South Lot -155 Transway Cres,43.731844,-79.263471,Surface,673,$0.00 / Half Hour,0.00,,,
+822,Warden North Lot - 705 Warden Ave,43.715522,-79.28131,Surface,920,$0.00 / Half Hour,0.00,,,
+823,Warden South Lot - 701 Warden Ave,43.710032,-79.27979,Surface,151,$0.00 / Half Hour,0.00,,,
+824,Victoria Main Lot - 777 Victoria Park Avenue,43.693563,-79.289052,Surface,173,$0.00 / Half Hour,0.00,,,
+826,Kennedy North Service Road - 2450 Eglinton Ave East,43.734117,-79.263977,Surface,199,$0.00 / Half Hour,0.00,,,
+827,Downsview Lot - 415 William R Allen Rd,43.747011,-79.459006,Surface,632,$0.00 / Half Hour,0.00,,,
+829,Transit Road Lot - 25 Transit Rd,43.733843,-79.452436,Surface,72,$0.00 / Half Hour,0.00,,,
+831,22 Fieldway Rd,43.642473,-79.52754,Surface,270,$0.00 / Half Hour,0.00,,,
+833,3950 Keele Street,43.765523,-79.491758,Surface,335,$1.50 / Half Hour,1.50,,,
+834,2800 Steeles Ave W.,43.777899,-79.511164,Surface,1881,$0.00 / Half Hour,0.00,,,
+835,7332 Jane St,43.782257,-79.521934,Surface,53,$2.50 / Half Hour,2.50,,,

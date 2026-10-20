@@ -1,0 +1,67 @@
+{
+ "join_log": [
+  {
+   "join": "cycling network -> centreline segments",
+   "method": "spatial (line within 25 m) AND normalized street-name equality",
+   "left_rows": 923,
+   "right_rows": 50027,
+   "matched_left_rows": 880,
+   "matched_right_rows": 4933,
+   "match_rate_left": 0.9534,
+   "notes": "Off-road cycling features (Multi-Use Trail*, Park Road) excluded before the join: they do not occupy a parking lane. A cycling line can match several segments. Source is the Cycling Network record (semi-annual refresh); the frozen Bikeways record carries an older, different feature set and was not used."
+  },
+  {
+   "join": "permit parking areas -> centreline segments",
+   "method": "spatial: segment representative point within permit-area polygon",
+   "left_rows": 97,
+   "right_rows": 50027,
+   "matched_right_rows": 12164,
+   "match_rate_right": 0.2431,
+   "notes": "97 permit-area polygons; a segment is in an area when its midpoint falls inside."
+  },
+  {
+   "join": "by-law rules -> centreline segments",
+   "method": "normalized street-name equality (rules carry no segment geometry; 30.5k of 77,940 by-law records anchor to an intersection point at best)",
+   "left_rows": 27768,
+   "distinct_left_streets": 6836,
+   "matched_left_streets": 5921,
+   "match_rate_left": 0.8661,
+   "notes": "Counts attach at street level: every segment of a street carries the street's rule counts. Rule extents (side, between) stay in bylaw_rules.csv."
+  },
+  {
+   "join": "parking tickets 2023-2025 -> centreline segments",
+   "method": "street name from ticket location2 (house number stripped, first street of intersections), normalized, equality with centreline street name",
+   "left_rows": 6454694,
+   "distinct_left_streets": 20211,
+   "matched_left_streets": 9358,
+   "match_rate_left": 0.463,
+   "tickets_on_matched_streets": 6348001,
+   "ticket_coverage": 0.9835,
+   "notes": "Ticket counts attach at street level. Source files are the reference project's raw slice (6,454,695 rows of which 6,454,694 carry a valid date), not re-downloaded."
+  },
+  {
+   "join": "parking occupancy -> Green P car parks",
+   "method": "car park number equality: Green P id '52' <-> occupancy 'CP52'; latest year/quarter kept",
+   "left_rows": 252,
+   "matched_left_rows": 149,
+   "match_rate_left": 0.5913,
+   "notes": "Green P snapshot is from 2019; occupancy runs to the latest published quarter. Capacity in the two files can differ; both are kept."
+  }
+ ],
+ "summary": {
+  "segments": 50027,
+  "streets": 13344,
+  "total_length_km": 6461.6,
+  "segments_with_bike_infra": 4933,
+  "segments_in_permit_area": 12164,
+  "bylaw_rules_current": 27768,
+  "ticket_rows": 6454694,
+  "tickets_on_matched_streets": 6348001,
+  "green_p_facilities": 252,
+  "green_p_with_occupancy": 149,
+  "bike_share_stations": 1070,
+  "cafeto_curb_lane": 287,
+  "accessible_stalls_offstreet": 669,
+  "ev_chargers": 82
+ }
+}
