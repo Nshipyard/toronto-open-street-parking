@@ -101,9 +101,11 @@ function distToSegment(
 export default function StreetMap({
   selectedNorm,
   onPick,
+  focusPos,
 }: {
   selectedNorm: string | null;
   onPick: (norm: string) => void;
+  focusPos?: { lat: number; lon: number } | null;
 }) {
   const { t } = useLang();
   const boxRef = useRef<HTMLDivElement>(null);
@@ -154,6 +156,22 @@ export default function StreetMap({
     const z = size.w < 720 ? 10 : 11;
     setView({ z, cx: xOf(-79.383, z), cy: yOf(43.705, z) });
   }, [size, view]);
+
+  // "Near me": centre on the visitor at street level when a position arrives.
+  useEffect(() => {
+    if (!focusPos) return;
+    const z = 15;
+    setView({ z, cx: xOf(focusPos.lon, z), cy: yOf(focusPos.lat, z) });
+  }, [focusPos]);
+
+  // The visitor's marker, in the same screen coordinates as the street paths.
+  const marker = useMemo(() => {
+    if (!focusPos || !view) return null;
+    const sx = xOf(focusPos.lon, view.z) - (view.cx - size.w / 2);
+    const sy = yOf(focusPos.lat, view.z) - (view.cy - size.h / 2);
+    if (sx < -30 || sy < -30 || sx > size.w + 30 || sy > size.h + 30) return null;
+    return { sx, sy };
+  }, [focusPos, view, size]);
 
   const breaks = useMemo(() => {
     if (!features) return { tickets: [] as number[], rules: [] as number[] };
@@ -401,6 +419,12 @@ export default function StreetMap({
                 <path d={selectedPath} fill="none" stroke="#ffffff" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
                 <path d={selectedPath} fill="none" stroke="#1a1a1a" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
               </>
+            )}
+            {marker && (
+              <g pointerEvents="none">
+                <circle cx={marker.sx} cy={marker.sy} r={13} fill="#d80621" fillOpacity={0.18} />
+                <circle cx={marker.sx} cy={marker.sy} r={6.5} fill="#d80621" stroke="#ffffff" strokeWidth={2.5} />
+              </g>
             )}
           </svg>
         </div>

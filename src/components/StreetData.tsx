@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLang } from "@/i18n";
 import StreetMap from "@/components/StreetMap";
+import { findNearbyStreets } from "@/lib/nearme";
+import type { NearbyStreet } from "@/lib/nearme";
 
 // Row of public/data/streets.json (built by scripts/build_segments.py):
 // [street, street_norm, segments, length_km, bike_share, permit_share,
@@ -69,6 +71,64 @@ export default function StreetData() {
   const [sortDir, setSortDir] = useState<1 | -1>(-1);
   const [page, setPage] = useState(0);
   const detailRef = useRef<HTMLDivElement>(null);
+
+  // "Near me": the visitor's position, and the streets within 500 m of it.
+  // nearSummary is /data/streets_near.json: norm -> [no_stopping, no_parking,
+  // time_limited, nearest_green_p_m | null], built by scripts/build_nearme.py.
+  type NearSummary = [number, number, number, number | null];
+  interface NearEntry extends NearbyStreet {
+    summary: NearSummary | null;
+    streetObj: Street | null;
+  }
+  const [userPos, setUserPos] = useState<{ lat: number; lon: number } | null>(null);
+  const [nearStatus, setNearStatus] = useState<"idle" | "locating" | "denied" | "unavailable" | "done">("idle");
+  const [nearEntries, setNearEntries] = useState<NearEntry[] | null>(null);
+
+  function handleNearMe() {
+    if (!("geolocation" in navigator)) {
+      setNearStatus("unavailable");
+      setNearEntries(null);
+      return;
+    }
+    setNearStatus("locating");
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        setUserPos({ lat, lon });
+        try {
+          // The map above already downloaded the street shapes from this
+          // same address, so the browser serves the file from its cache.
+          const [fc, near] = await Promise.all([
+            fetch("/data/streets_map.geojson").then((r) => r.json()),
+            fetch("/data/streets_near.json").then((r) => r.json()) as Promise<Record<string, NearSummary>>,
+          ]);
+          const shapes = (fc.features ?? []).map(
+            (f: { properties: { street: string; norm: string }; geometry: { coordinates: number[][][] } }) => ({
+              street: f.properties.street,
+              norm: f.properties.norm,
+              lines: f.geometry.coordinates,
+            })
+          );
+          const found = findNearbyStreets(lat, lon, shapes, 500);
+          setNearEntries(
+            found.map((f) => ({
+              ...f,
+              summary: near[f.norm] ?? null,
+              streetObj: streetsRef.current.find((s) => s.norm === f.norm) ?? null,
+            }))
+          );
+          setNearStatus("done");
+        } catch {
+          setNearStatus("unavailable");
+        }
+      },
+      (err) => {
+        setNearStatus(err.code === err.PERMISSION_DENIED ? "denied" : "unavailable");
+      },
+      { timeout: 10000, maximumAge: 60000 }
+    );
+  }
 
   useEffect(() => {
     fetch("/data/streets.json")
@@ -172,7 +232,84 @@ export default function StreetData() {
   return (
     <section id="explorer" className="bg-paper-warm">
       <div className="mx-auto max-w-[1392px] px-6 py-20 md:py-28">
-        <StreetMap selectedNorm={selected?.norm ?? null} onPick={handleMapPick} />
+        <StreetMap selectedNorm={selected?.norm ?? null} onPick={handleMapPick} focusPos={userPos} />
+
+        <div className="mb-16">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <button
+              data-testid="nearme-button"
+              onClick={handleNearMe}
+              className="rounded-full bg-canada px-6 py-3 text-[15.5px] font-semibold text-white hover:bg-canada-dark"
+            >
+              {t.nearme.button}
+            </button>
+            <p className="text-[14.5px] text-ink/60">{t.nearme.note}</p>
+          </div>
+          {nearStatus === "locating" && (
+            <p data-testid="nearme-message" className="mt-4 text-[15.5px] text-ink/65">{t.nearme.locating}</p>
+          )}
+          {(nearStatus === "denied" || nearStatus === "unavailable") && (
+            <p data-testid="nearme-message" className="mt-4 max-w-[720px] rounded-[16px] border border-line bg-paper px-5 py-4 text-[15.5px] leading-relaxed text-ink/75">
+              {nearStatus === "denied" ? t.nearme.denied : t.nearme.unavailable}
+            </p>
+          )}
+          {nearStatus === "done" && nearEntries !== null && (
+            <div className="mt-8">
+              <h3 className="display text-[30px] md:text-[36px]">{t.nearme.title}</h3>
+              <p className="mt-2 max-w-[720px] text-[15.5px] leading-relaxed text-ink/65">{t.nearme.limit}</p>
+              {nearEntries.length === 0 && (
+                <p data-testid="nearme-message" className="mt-4 text-[15.5px] text-ink/65">{t.nearme.none}</p>
+              )}
+              <ul data-testid="nearme-list" className="mt-5 divide-y divide-line/70 overflow-hidden rounded-[24px] border border-line bg-paper">
+                {nearEntries.map((e) => {
+                  const ruleLine = (label: string, n: number) =>
+                    `${label}: ${fmt(n)} ${n === 1 ? t.search.rulesWordOne : t.search.rulesWord}`;
+                  return (
+                    <li key={e.norm}>
+                      <button
+                        data-testid="nearme-entry"
+                        disabled={!e.streetObj}
+                        onClick={() => e.streetObj && selectStreet(e.streetObj)}
+                        className="block w-full px-5 py-4 text-left hover:bg-paper-warm disabled:cursor-default"
+                      >
+                        <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                          <span className="text-[16.5px] font-semibold">{e.street}</span>
+                          <span className="font-mono text-[13.5px] text-ink/60">
+                            {fmt(Math.round(e.distanceM))} {t.nearme.away}
+                          </span>
+                        </span>
+                        <span className="mt-1 block text-[14.5px] leading-relaxed text-ink/70">
+                          {e.summary
+                            ? [
+                                ruleLine(t.nearme.noStopping, e.summary[0]),
+                                ruleLine(t.nearme.noParking, e.summary[1]),
+                                ruleLine(t.nearme.timeLimited, e.summary[2]),
+                              ].join(" · ")
+                            : ""}
+                        </span>
+                        {(e.streetObj || (e.summary && e.summary[3] !== null)) && (
+                          <span className="mt-0.5 block text-[14.5px] text-ink/70">
+                            {[
+                              e.streetObj
+                                ? `${t.nearme.permitArea}: ${e.streetObj.permitShare > 0 ? t.nearme.yes : t.nearme.no}`
+                                : null,
+                              e.summary && e.summary[3] !== null
+                                ? `${t.search.nearestGp}: ${fmt(e.summary[3])} m`
+                                : null,
+                            ]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
+
         <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-canada">{t.search.kicker}</p>
         <h2 className="display mt-4 max-w-[820px] text-[40px] md:text-[52px]">{t.search.title}</h2>
         <p className="mt-5 max-w-[820px] text-[18px] leading-relaxed text-ink/70">{t.search.body}</p>

@@ -22,15 +22,16 @@ export function Nav() {
   const { t, lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const links = [
-    { href: "#explorer", label: t.nav.explorer },
-    { href: "#gaps", label: t.nav.gaps },
-    { href: "#developers", label: t.nav.developers },
-    { href: "#data", label: t.nav.data },
+    { href: "/#explorer", label: t.nav.explorer },
+    { href: "/charts", label: t.nav.charts },
+    { href: "/#gaps", label: t.nav.gaps },
+    { href: "/#developers", label: t.nav.developers },
+    { href: "/#data", label: t.nav.data },
   ];
   return (
     <header className="border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1392px] items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="/" className="flex items-center gap-2.5">
           <MapleLeaf className="h-7 w-7 text-canada" />
           <span className="flex flex-col gap-[2px] leading-none"><span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/55">Open Nshipyard</span><span className="display text-[24px]">Open Street Parking</span></span>
         </a>

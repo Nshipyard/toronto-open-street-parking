@@ -1,0 +1,136 @@
+{
+ "totalStreets": 13344,
+ "match": [
+  {
+   "source": "tickets",
+   "rate": 98.3
+  },
+  {
+   "source": "cycling",
+   "rate": 95.3
+  },
+  {
+   "source": "rules",
+   "rate": 86.6
+  },
+  {
+   "source": "greenp",
+   "rate": 59.1
+  },
+  {
+   "source": "permit",
+   "rate": 24.3
+  }
+ ],
+ "top15": [
+  {
+   "street": "Bloor St W",
+   "rules": 200
+  },
+  {
+   "street": "Dufferin St",
+   "rules": 183
+  },
+  {
+   "street": "St Clair Ave W",
+   "rules": 180
+  },
+  {
+   "street": "Dundas St W",
+   "rules": 175
+  },
+  {
+   "street": "Yonge St",
+   "rules": 167
+  },
+  {
+   "street": "Eglinton Ave W",
+   "rules": 122
+  },
+  {
+   "street": "Bathurst St",
+   "rules": 112
+  },
+  {
+   "street": "Weston Rd",
+   "rules": 98
+  },
+  {
+   "street": "King St W",
+   "rules": 89
+  },
+  {
+   "street": "Queen St E",
+   "rules": 83
+  },
+  {
+   "street": "Kingston Rd",
+   "rules": 78
+  },
+  {
+   "street": "College St",
+   "rules": 73
+  },
+  {
+   "street": "Queen St W",
+   "rules": 70
+  },
+  {
+   "street": "Avenue Rd",
+   "rules": 69
+  },
+  {
+   "street": "Carlaw Ave",
+   "rules": 68
+  }
+ ],
+ "coverage": [
+  {
+   "key": "rules",
+   "count": 5921,
+   "share": 44.4
+  },
+  {
+   "key": "tickets",
+   "count": 9358,
+   "share": 70.1
+  },
+  {
+   "key": "bike",
+   "count": 521,
+   "share": 3.9
+  },
+  {
+   "key": "permit",
+   "count": 3571,
+   "share": 26.8
+  },
+  {
+   "key": "greenp",
+   "count": 2134,
+   "share": 16.0
+  }
+ ],
+ "buckets": [
+  {
+   "key": "b0",
+   "count": 7423
+  },
+  {
+   "key": "b1",
+   "count": 4725
+  },
+  {
+   "key": "b2",
+   "count": 1053
+  },
+  {
+   "key": "b3",
+   "count": 112
+  },
+  {
+   "key": "b4",
+   "count": 31
+  }
+ ]
+}
