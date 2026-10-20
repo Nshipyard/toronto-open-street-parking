@@ -13,7 +13,7 @@ const en = {
   nav: { explorer: "Explorer", gaps: "What's missing", developers: "Developers", data: "Data", back: "All projects" },
   hero: {
     kicker: "Open Nshipyard · Toronto Open Street Parking",
-    title: "Toronto street parking data, joined",
+    title: "Toronto street parking data in one file",
     lead: "Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.",
     sub: "Toronto's Parking Authority manages about 21,000 paid on-street spaces worth $67.7 million a year. The City knows where every stall, sign, and meter is: a contractor drives the streets with cameras and builds that inventory. It is not open data. This project inventories every public dataset that describes street parking, joins what can be joined into one open street parking dataset, and documents the rest as gaps, with the search evidence for each one.",
     cta1: "Browse the inventory",
@@ -136,7 +136,7 @@ const fr: Dict = {
   nav: { explorer: "Explorateur", gaps: "Ce qui manque", developers: "Développeurs", data: "Données", back: "Tous les projets" },
   hero: {
     kicker: "Open Nshipyard · Toronto Open Street Parking",
-    title: "Données sur le stationnement sur rue à Toronto, réunies",
+    title: "Les données sur le stationnement sur rue de Toronto dans un seul fichier",
     lead: "Chaque jeu de données ouvert de Toronto sur le stationnement sur rue, joint en un seul fichier : 50 027 segments de rue. Les routes de déneigement et les emplacements des places de stationnement n'y figurent pas, parce que la ville ne les publie pas.",
     sub: "La Toronto Parking Authority gère environ 21 000 places payantes sur rue, d'une valeur de 67,7 millions de dollars par an. La Ville sait où se trouve chaque place, chaque panneau et chaque parcomètre : un entrepreneur parcourt les rues avec des caméras et construit cet inventaire. Ce n'est pas une donnée ouverte. Ce projet recense chaque jeu de données public qui décrit le stationnement sur rue, joint ce qui peut l'être en un seul jeu de données ouvert, et documente le reste comme des manques, avec les preuves de recherche pour chacun.",
     cta1: "Parcourir l'inventaire",

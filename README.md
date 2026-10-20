@@ -1,4 +1,4 @@
-# Toronto street parking data, joined
+# Toronto street parking data in one file
 
 **Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.** The ones that can be joined are joined into one dataset of 50,027 street segments; the rest are documented as gaps, each with the search evidence behind it.
 

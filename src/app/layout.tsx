@@ -8,7 +8,7 @@ import "./globals.css";
 import { LangProvider } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: "Toronto street parking data, joined",
+  title: "Toronto street parking data in one file",
   description:
     "Every City of Toronto open dataset about street parking, inventoried and joined into one open dataset of 50,027 street segments, plus the gap report on what is not published. Explorer, REST API, OpenAPI docs, and MCP tools. Open data, MIT licensed.",
 };
