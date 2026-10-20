@@ -6,7 +6,7 @@ const spec = {
     title: "Toronto Open Street Parking API",
     version: "1.0.0",
     description:
-      "Every City of Toronto open dataset that describes street parking, inventoried, and the joins that can be made between them: centreline road segments carrying by-law rule counts, bike infrastructure, permit areas, nearby facilities, and 2023-2025 ticket counts. Plus the gap report: what the City holds about street parking that it does not publish. MIT licensed.",
+      "Toronto street parking data combined into one file: 50,027 centreline road segments carrying by-law rule counts, bike infrastructure, permit areas, nearby facilities, and 2023-2025 ticket counts, searchable street by street and segment by segment. Plus the source inventory and the gap report: what the City holds about street parking that it does not publish. MIT licensed.",
   },
   servers: [{ url: "https://open-street-parking.canada.nshipyard.com/api/v1" }],
   paths: {
@@ -29,12 +29,24 @@ const spec = {
     },
     "/curb/streets": {
       get: {
-        summary: "Street-level rollup of the joined segment dataset: segments, length, bike infrastructure share, permit coverage, rule counts, ticket counts",
+        summary: "Street-level rollup of the combined segment dataset: segments, length, bike infrastructure share, permit coverage, rule counts, ticket counts",
         parameters: [
           { name: "q", in: "query", required: false, schema: { type: "string" }, example: "queen" },
           { name: "limit", in: "query", required: false, schema: { type: "integer" }, example: 20 },
         ],
         responses: { "200": { description: "Street list, ordered by ticket count" } },
+      },
+    },
+    "/curb/streets/{street}/segments": {
+      get: {
+        summary: "Every segment of one street from the combined file, with the combined attributes on each segment: road class, one-way, length, address range, cycling infrastructure type, permit area, facility counts within 250 m, nearest Green P distance, and the street's Chapter 950 rule counts by category",
+        parameters: [
+          { name: "street", in: "path", required: true, schema: { type: "string" }, example: "YONGE ST" },
+        ],
+        responses: {
+          "200": { description: "Street segments with rule_categories and rollup" },
+          "404": { description: "Street not in the combined file" },
+        },
       },
     },
     "/curb/joins": {

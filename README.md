@@ -1,6 +1,6 @@
 # Toronto street parking data in one file
 
-**Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.** The ones that can be joined are joined into one dataset of 50,027 street segments; the rest are documented as gaps, each with the search evidence behind it.
+**Every open Toronto dataset about street parking, joined into one file: 50,027 road segments. Snow routes and parking stall locations are not in it, because the city does not publish them.** Eleven of the inventoried datasets are combined into the file; the rest are documented as gaps, each with the search evidence behind it.
 
 An [Open Nshipyard](https://canada.nshipyard.com) civic data project. Not affiliated with the City of Toronto.
 
@@ -16,11 +16,11 @@ The City knows its street parking asset by asset. SenSen, under contract to the 
 ## What was built
 
 1. **An inventory of street parking data** (`data/inventory.json`, `data/inventory.csv`): 34 datasets from the City of Toronto Open Data catalogue that describe street parking, each with its CKAN id, formats, geometry, last update, refresh rate as stated in the catalogue, the street parking questions it answers (who may park, where, when, at what price, what blocks it, how it is used, how it is enforced), and its join status with the reason.
-2. **A joined open street parking dataset** (`data/open_curb_segments.geojson`, `data/open_curb_segments.csv`): one row per Toronto Centreline road segment (50,027 rows, 6,461.6 km of road), carrying bike infrastructure, permit-parking area, current by-law rule counts by category, 2023-2025 ticket counts, and counts of nearby Green P car parks, Bike Share stations, CaféTO parking-lane cafés, accessible stalls, and EV chargers, plus the distance to the nearest Green P car park. Street rollup: `data/open_curb_streets.csv` (13,344 streets). Field definitions: `data/data_dictionary.md`.
+2. **A combined open street parking dataset** (`data/open_curb_segments.geojson`, `data/open_curb_segments.csv`): one row per Toronto Centreline road segment (50,027 rows, 6,461.6 km of road), carrying bike infrastructure, permit-parking area, current by-law rule counts by category, 2023-2025 ticket counts, and counts of nearby Green P car parks, Bike Share stations, CaféTO parking-lane cafés, accessible stalls, and EV chargers, plus the distance to the nearest Green P car park. Street rollup: `data/open_curb_streets.csv` (13,344 streets). Field definitions: `data/data_dictionary.md`.
 3. **The flattened by-law rules** (`data/derived/bylaw_rules.csv`): 27,768 current street parking rules from Municipal Code Chapter 950, one row per rule, with street, side, extent text, times text, category, and an intersection anchor point where the source carries one.
 4. **Green P facilities with occupancy** (`data/green_p_facilities.csv`): 252 car parks with capacity and published rate text, joined to the latest quarter of TPA parking occupancy by car park number.
 5. **A gap report** (in the web app and below): 8 documented gaps.
-6. **A web app** in the Open Nshipyard family pattern: bilingual (EN/FR) explorer for the inventory and the joined streets, the gap report, REST API under `/api/v1/curb/*`, an OpenAPI spec at `/api/openapi.json`, and MCP tools at `/mcp`.
+6. **A web app** in the Open Nshipyard family pattern, bilingual (EN/FR). The homepage opens on the combined dataset itself: the combined-file downloads sit directly under the hero, then a street search (type a street name, get its combined profile and every one of its segments with the combined attributes on each), then the full 13,344-street rollup as a sortable, searchable table. Below that: the gap report, the developer surfaces, and, near the bottom under "Where the data came from", the source inventory with what each dataset added and the combination match rates. Per-street segment data is served lazily from `data/segments_by_street.json` (built by `scripts/build_segments.py`) through `GET /api/v1/curb/streets/{street}/segments`; the street rollup is served as a static file at `/data/streets.json`. REST API under `/api/v1/curb/*`, an OpenAPI spec at `/api/openapi.json`, and MCP tools at `/mcp`.
 
 ## The join log
 
@@ -34,7 +34,7 @@ Every join, its key, and its rate (computed, not estimated):
 | Parking tickets 2023-2025 → centreline segments | Street name from the ticket address (house number stripped), normalized | 6,454,694 tickets with valid dates; 6,348,001 (98.3%) sit on streets the centreline names; 9,358 of 20,211 ticket street strings matched |
 | Parking occupancy → Green P car parks | Car park number (Green P id 52 → occupancy CP52), latest quarter kept | 149 of 252 car parks matched (59.1%) |
 
-Deliberately not joined, with reasons in the inventory: the frozen Bikeways record (a different, older feature set than Cycling Network; the maintained record was joined), the February 2014 taxicab spreadsheet (stale, no coordinates; the current stands were joined through the by-law rules), the 244 MB edge-of-road polygons (pavement extent only, no street parking allocation), datasets with no downloadable resource (free-floating carshare), and street furniture (shelters, bike racks) that does not allocate the parking lane.
+Left out, with reasons in the inventory: the frozen Bikeways record (a different, older feature set than Cycling Network; the maintained record was combined instead), the February 2014 taxicab spreadsheet (stale, no coordinates; the current stands were combined through the by-law rules), the 244 MB edge-of-road polygons (pavement extent only, no street parking allocation), datasets with no downloadable resource (free-floating carshare), and street furniture (shelters, bike racks) that does not allocate the parking lane.
 
 ## The gap report
 
@@ -53,12 +53,12 @@ A gap is listed only where a search backs it. The catalogue was searched through
 
 - **Catalogue access.** The CKAN API endpoint in the City's docs, `open.toronto.ca/api/3/action/...`, returns 404. The working endpoint is the CKAN host, `ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/`. All searches and downloads used it on October 20, 2026. Package metadata is preserved in `data/raw/ckan_meta.json`.
 - **Inventory rule.** A dataset enters the inventory when its records describe street parking: who may park, stop, or load, where, when, at what price, what blocks a parking space, or how street parking is used or enforced. The remaining keyword matches mention street parking only in passing (a street inside an address, parking inside a survey) and were excluded for that stated reason.
-- **Spine.** Toronto Centreline, 64,392 features, filtered to 50,027 road segments. Trails, rivers, railways, walkways, and hydro lines were removed because they have no street parking. Segment geometry is the only geometry the joined dataset asserts as its own.
+- **Spine.** Toronto Centreline, 64,392 features, filtered to 50,027 road segments. Trails, rivers, railways, walkways, and hydro lines were removed because they have no street parking. Segment geometry is the only geometry the combined dataset asserts as its own.
 - **Spatial joins** ran in EPSG:2952 (MTM zone 10). Facility counts use a 250 m radius around each segment's midpoint. Permit areas use the midpoint-in-polygon test. Bike infrastructure requires both proximity (25 m) and street-name equality, so a parallel trail cannot mark a street as having a bike lane.
 - **Name joins.** Street names were normalized by one function used for every source: uppercase, drop parenthetical district markers, abbreviate street types in suffix position, fold direction words (West to W). Rule and ticket counts attach at street level because neither source publishes finer locations.
 - **Current rules.** Of 77,940 by-law records, 13,914 carry a latest action of "Repealed" and were dropped. 46,455 carry an empty latest-action status and were kept as current. Empty is not proof a rule is in force; it is the absence of a repeal record. The kept set is 27,768 rules in 18 street parking categories (listed in the data dictionary).
 - **Tickets.** The slice is the sibling project's raw files (City of Toronto Parking Tickets, 2023-2025; 6,454,695 rows, 6,454,694 with valid dates), not re-downloaded. Two file quirks are handled in code and recorded here because either one silently drops data: the single 2025 file ships UPPERCASE headers and a leading blank line (reading it with lowercase keys yields zero rows for the year), and one monthly file repeats its header row mid-file.
-- **Verification.** Per-street ticket counts were cross-checked against the sibling project's geocoded counts (theirs count address-matched tickets only, so the joined counts sit at or above them: Keele St 118,953 against 118,435). The published GeoJSON parses to exactly 50,027 features. The February 2025 storm figures, the TPA budget figures, and the repaint window (the City repaints road markings June 1 to October 31, two coats, per the City's pavement markings page) are context from the cited sources, not outputs of the joins.
+- **Verification.** Per-street ticket counts were cross-checked against the sibling project's geocoded counts (theirs count address-matched tickets only, so the combined counts sit at or above them: Keele St 118,953 against 118,435). The published GeoJSON parses to exactly 50,027 features. The February 2025 storm figures, the TPA budget figures, and the repaint window (the City repaints road markings June 1 to October 31, two coats, per the City's pavement markings page) are context from the cited sources, not outputs of the joins.
 
 ## Sources
 
@@ -83,6 +83,7 @@ python3 scripts/extract_bylaw.py    # streams the by-law file into data/derived/
 python3 scripts/build_joined.py     # the joins: segments, streets, facilities, join log
 python3 scripts/build_inventory.py  # inventory.json / inventory.csv
 python3 scripts/build_app_data.py   # data/app_data.json + data dictionary
+python3 scripts/build_segments.py   # data/segments_by_street.json + public/data/streets.json for the web app
 ```
 
 The ticket slice is read from the sibling project at `~/workspace/toronto-parking-tickets-geocoded/data/raw/` (see `TICKET_RAW` in `scripts/build_joined.py`). Raw downloads under `data/raw/` are a cache; the two largest files (the 806 MB by-law JSON and the 93 MB centreline GeoJSON) are not kept in this tree and are restored by `fetch_sources.py`.

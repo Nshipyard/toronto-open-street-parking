@@ -109,6 +109,66 @@ export function getData(): AppData {
   return cache;
 }
 
+// Per-street segment data, built by scripts/build_segments.py from
+// data/open_curb_segments.csv. Rule counts and ticket counts in the source are
+// street-level, so rules are stored once per street as rule_categories.
+export type SegmentTuple = [
+  number, // segment_id
+  string, // road_class
+  number, // oneway 1/0
+  number, // length_m
+  number | null, // addr_lo_l
+  number | null, // addr_hi_l
+  number | null, // addr_lo_r
+  number | null, // addr_hi_r
+  string, // bike_infra_type ("" when none)
+  string, // permit_area ("" when none)
+  number, // green_p_250m
+  number, // bike_share_250m
+  number, // cafeto_curb_lane_250m
+  number, // accessible_stalls_250m
+  number, // ev_chargers_250m
+  number | null, // nearest_green_p_m
+];
+
+export interface StreetSegments {
+  street: string;
+  rule_categories: Record<string, number>;
+  segments: SegmentTuple[];
+}
+
+let segCache: Record<string, StreetSegments> | null = null;
+
+export function getSegmentsByStreet(): Record<string, StreetSegments> {
+  if (!segCache) {
+    segCache = JSON.parse(
+      fs.readFileSync(path.join(DATA, "segments_by_street.json"), "utf-8")
+    ) as Record<string, StreetSegments>;
+  }
+  return segCache;
+}
+
+export function expandSegment(t: SegmentTuple) {
+  return {
+    segment_id: t[0],
+    road_class: t[1],
+    oneway: t[2] === 1,
+    length_m: t[3],
+    addr_lo_l: t[4],
+    addr_hi_l: t[5],
+    addr_lo_r: t[6],
+    addr_hi_r: t[7],
+    bike_infra_type: t[8] || null,
+    permit_area: t[9] || null,
+    green_p_250m: t[10],
+    bike_share_250m: t[11],
+    cafeto_curb_lane_250m: t[12],
+    accessible_stalls_250m: t[13],
+    ev_chargers_250m: t[14],
+    nearest_green_p_m: t[15],
+  };
+}
+
 export function fmt(n: number): string {
   return n.toLocaleString("en-CA");
 }

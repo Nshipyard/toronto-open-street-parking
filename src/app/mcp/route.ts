@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getData } from "@/lib/curb";
+import { getData, getSegmentsByStreet, expandSegment } from "@/lib/curb";
 
 // Minimal MCP server over streamable HTTP (JSON-RPC 2.0 via POST).
 // Supports: initialize, tools/list, tools/call. Stateless.
@@ -10,7 +10,7 @@ const TOOLS = [
   {
     name: "curb_summary",
     description:
-      "Headline numbers for Toronto Open Street Parking: how many street parking datasets were inventoried and joined, how many street segments the joined dataset holds, how many current by-law street parking rules exist, ticket coverage, and how many gaps are documented.",
+      "Headline numbers for Toronto Open Street Parking: how many street parking datasets were inventoried and combined into the file, how many street segments the combined dataset holds, how many current by-law street parking rules exist, ticket coverage, and how many gaps are documented.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -30,10 +30,20 @@ const TOOLS = [
   {
     name: "curb_street_profile",
     description:
-      "The joined street parking profile for one Toronto street: segment count, length, bike infrastructure share, permit parking coverage, by-law rule count, and 2023-2025 parking ticket count. Pass a street name fragment, e.g. 'Queen St W'.",
+      "The combined street parking profile for one Toronto street: segment count, length, bike infrastructure share, permit parking coverage, by-law rule count, and 2023-2025 parking ticket count. Pass a street name fragment, e.g. 'Queen St W'.",
     inputSchema: {
       type: "object",
       properties: { street: { type: "string", description: "Street name fragment, e.g. 'queen'" } },
+      required: ["street"],
+    },
+  },
+  {
+    name: "curb_street_segments",
+    description:
+      "Every segment of one Toronto street from the combined file: road class, one-way, length, address range, cycling infrastructure type, permit parking area, facility counts within 250 m, and distance to the nearest Green P car park, plus the street's Chapter 950 rule counts by category. Pass the normalized street name, e.g. 'YONGE ST' (see curb_street_profile for names).",
+    inputSchema: {
+      type: "object",
+      properties: { street: { type: "string", description: "Normalized street name, e.g. 'YONGE ST'" } },
       required: ["street"],
     },
   },
@@ -96,6 +106,21 @@ function handle(msg: any) {
           if (args.joined) rows = rows.filter((r) => r.joined === String(args.joined));
           const limit = Math.min(100, Math.max(1, Number(args.limit) || 20));
           return ok(id, textResult({ count: rows.length, datasets: rows.slice(0, limit) }));
+        }
+        if (name === "curb_street_segments") {
+          const norm = String(args.street || "").trim().toUpperCase();
+          const entry = getSegmentsByStreet()[norm];
+          if (!entry) return err(id, -32001, `No street named '${args.street}' in the combined file`);
+          return ok(
+            id,
+            textResult({
+              street: entry.street,
+              street_norm: norm,
+              rule_categories: entry.rule_categories,
+              count: entry.segments.length,
+              segments: entry.segments.map(expandSegment),
+            })
+          );
         }
         if (name === "curb_street_profile") {
           const q = String(args.street || "").toLowerCase();

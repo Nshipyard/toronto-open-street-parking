@@ -28,11 +28,22 @@ const endpoints = [
   {
     method: "GET",
     path: "/api/v1/curb/streets?q=queen&limit=5",
-    desc: "The joined street parking profile of streets matching a name",
+    desc: "The combined street parking profile of streets matching a name",
     response: `{ "count": 6, "streets": [
   { "street": "Queen St W", "segments": 74,
     "bike_infra_share": 0.046, "permit_share": 0.824,
     "rules_total": 70, "tickets_2023_2025": 123995 }, … ] }`,
+  },
+  {
+    method: "GET",
+    path: "/api/v1/curb/streets/YONGE%20ST/segments",
+    desc: "Every segment of one street, with the combined attributes on each segment",
+    response: `{ "street": "Yonge St", "count": 214,
+  "rule_categories": { "no_stopping": 85, … },
+  "segments": [
+    { "segment_id": 436600, "road_class": "Major Arterial",
+      "length_m": 97.6, "bike_infra_type": null,
+      "permit_area": null, "nearest_green_p_m": 1680 }, … ] }`,
   },
   {
     method: "GET",

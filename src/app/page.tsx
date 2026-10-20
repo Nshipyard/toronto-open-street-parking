@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/i18n";
 import { Banner, Nav, Footer } from "@/components/chrome";
-import Explorer from "@/components/Explorer";
-import Showcase from "@/components/Showcase";
+import StreetData from "@/components/StreetData";
+import Sources from "@/components/Sources";
 import Gaps from "@/components/Gaps";
 import Developers from "@/components/Developers";
 
@@ -62,6 +62,38 @@ function Hero() {
             ))}
           </div>
         )}
+      </div>
+    </section>
+  );
+}
+
+function CombinedDownloads() {
+  const { t } = useLang();
+  const files = [
+    { label: t.combinedDl.csv, name: "open_curb_segments.csv", path: "/data/open_curb_segments.csv" },
+    { label: t.combinedDl.geojson, name: "open_curb_segments.geojson", path: "/data/open_curb_segments.geojson" },
+    { label: t.combinedDl.dict, name: "data_dictionary.md", path: "/data/data_dictionary.md" },
+  ];
+  return (
+    <section className="border-t border-line bg-paper">
+      <div className="mx-auto max-w-[1392px] px-6 py-12">
+        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+          <h2 className="display text-[26px] md:text-[30px]">{t.combinedDl.title}</h2>
+          <p className="text-[15.5px] text-ink/65">{t.combinedDl.note}</p>
+        </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {files.map((f) => (
+            <div key={f.name} className="flex items-center justify-between gap-4 rounded-[20px] border border-line bg-paper-warm px-5 py-4">
+              <div className="min-w-0">
+                <p className="text-[15px] font-semibold">{f.label}</p>
+                <code className="block truncate font-mono text-[12.5px] text-ink/55">{f.name}</code>
+              </div>
+              <a href={f.path} download className="shrink-0 rounded-full border border-line bg-paper px-4 py-2 text-[14px] font-semibold hover:border-ink">
+                {t.downloads.download}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -125,10 +157,11 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <Explorer />
-        <Showcase />
+        <CombinedDownloads />
+        <StreetData />
         <Gaps />
         <Developers />
+        <Sources />
         <Methodology />
         <Downloads />
       </main>

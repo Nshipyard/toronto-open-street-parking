@@ -1,4 +1,4 @@
-# Data dictionary: toronto-open-street-parking joined segment dataset
+# Data dictionary: toronto-open-street-parking combined segment dataset
 
 One row per Toronto Centreline road segment (50,027 rows). Fields, what they mean, which dataset each field came from, and the join that attached it. Fields marked street-level attach the same value to every segment of a street, because the source publishes no finer location.
 
@@ -7,11 +7,11 @@ One row per Toronto Centreline road segment (50,027 rows). Fields, what they mea
 | segment_id | Centreline segment identifier (CENTRELINE_ID). One row is one block-length piece of a street between two intersections. | Toronto Centreline (TCL) | spine |
 | street_name | Street name as printed in the Centreline file, e.g. 'Queen St W'. | Toronto Centreline (TCL) | spine |
 | street_norm | Normalized street name used as the join key for every name-based join: uppercased, street types abbreviated, district markers removed. | derived in this project | normalization of street_name |
-| road_class | Centreline feature class: Local, Collector, Major Arterial, Minor Arterial, Laneway, Expressway, and related road classes. Trails, rivers, railways and walkways were removed before the join. | Toronto Centreline (TCL) | spine filter |
+| road_class | Centreline feature class: Local, Collector, Major Arterial, Minor Arterial, Laneway, Expressway, and related road classes. Trails, rivers, railways and walkways were removed before the combination. | Toronto Centreline (TCL) | spine filter |
 | oneway | True when the Centreline one-way direction code is anything other than 'Not One-Way'. | Toronto Centreline (TCL) | spine |
 | length_m | Segment length in metres, computed from the segment geometry in EPSG:2952. | derived in this project | geometry measure |
 | addr_lo_l / addr_hi_l / addr_lo_r / addr_hi_r | Lowest and highest street numbers on the left and right sides of the segment, where the Centreline carries them. The address range is the finest published hint of where along a street something sits. | Toronto Centreline (TCL) | spine |
-| bike_infra_type | Cycling infrastructure type on this segment (Bike Lane, Cycle Track, Sharrows, and so on), blank when none joined. Off-road trails were excluded: they do not occupy a parking lane. | Cycling Network | spatial: cycling line within 25 m AND same normalized street name |
+| bike_infra_type | Cycling infrastructure type on this segment (Bike Lane, Cycle Track, Sharrows, and so on), blank when none. Off-road trails were excluded: they do not occupy a parking lane. | Cycling Network | spatial: cycling line within 25 m AND same normalized street name |
 | permit_area | On-street permit parking area code (e.g. 12B) when the segment's midpoint falls inside a permit-area polygon, blank otherwise. | On-Street Permit Parking Area Maps | spatial: midpoint in polygon |
 | rules_<category> | Count of current Chapter 950 street parking rules in a category that name this segment's street. Categories: no_parking, no_stopping, no_standing, time_limited_parking, commercial_loading, passenger_loading, delivery_vehicle_parking, bus_loading, school_bus_loading, bus_parking, taxicab_stand, winter_parking_prohibited, snow_storm_parking, carshare_parking, ev_charging_parking, municipal_parking_facility, permitted_angle_parking, reserved_lane. Counts are street-level: the by-law has no segment geometry, so every segment of a street carries the street's counts. | Traffic and Parking By-Law Schedules | street-name equality on street_norm |
 | rules_total | Sum of rules_<category> across the 18 categories. | derived in this project | sum |
